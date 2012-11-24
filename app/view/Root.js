@@ -149,19 +149,29 @@ Ext.define('MyApp.view.Root', {
                     {
                         xtype: 'panel',
 						id: 'page0',
-                        items: [
+   						html: '<center><div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./app/image/button_green.png" style="width:100%;"></div></center>',
+						items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
                                 title: '탭'
-                            },
-							{
-								xtype:'button',
-								cls:'cls-star',
-								pressedCls:'cls-star2',
-								pressedDelay:2000,
+                            }
+                        ],
+						listeners: {
+							initialize: function(e) {
+								this.on('activate', function() { 
+									if (document.getElementById('imgGreen'))
+    									document.getElementById('imgGreen').src = "./app/image/button_green.png"
+								} );
+							},
+							tap :{
+								fn : function( event ) {
+									document.getElementById('imgGreen').src = "./app/image/button_red.png"
+								},
+								element : "element"
+
 							}
-                        ]
+						}
                     },
                     {
                         xtype: 'panel',
@@ -171,13 +181,20 @@ Ext.define('MyApp.view.Root', {
                                 xtype: 'titlebar',
                                 docked: 'top',
                                 title: '탭홀드'
-                            }
+                            },
+							{
+								xtype:'button',
+								iconMask: true,
+								cls:'cls-star',
+								pressedCls:'cls-star2',
+								pressedDelay:2000,
+							}
                         ]
                     },
 					{
                         xtype: 'panel',
                         id: 'page2',
-						html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./app/image/pinwheel_aquay.png"></div>',
+						html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./app/image/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
                         items: [
                             {
                                 xtype: 'titlebar',
@@ -201,13 +218,38 @@ Ext.define('MyApp.view.Root', {
                     {
                         xtype: 'panel',
                         id: 'page3',
+						html: '<center><div class="cls-pinch" style="width: 300px; height: 300px;"></div></center>',
                         items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
                                 title: '핀치'
                             }
-                        ]
+                        ],
+						listeners: {
+							//tap :{
+							pinch :{
+								fn : function( event ) {	
+									var changedScale
+									
+									if( event.scale > 1){//확대
+										 (event.scale > 1.005 ) ?  changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 1.05  :   changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+										
+										(changedScale > 500) ? (document.querySelector( '.cls-pinch' ).style.height = "500px") : (document.querySelector( '.cls-pinch' ).style.height = changedScale + "px");
+										(changedScale > 500) ? (document.querySelector( '.cls-pinch' ).style.width = "500px") : (document.querySelector( '.cls-pinch' ).style.width = changedScale + "px");
+										
+									}
+									else{//축소
+										
+										 (event.scale < 0.95 ) ?  changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 0.95  :   changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+										
+										(changedScale < 100 ) ? (document.querySelector( '.cls-pinch' ).style.height = "100px") : (document.querySelector( '.cls-pinch' ).style.height = changedScale + "px");
+										(changedScale < 100 ) ? (document.querySelector( '.cls-pinch' ).style.width = "100px") : (document.querySelector( '.cls-pinch' ).style.width = changedScale + "px");
+									}
+								},
+								element : "element"								
+							}
+						}
                     },
 					{
                         xtype: 'panel',
@@ -246,11 +288,10 @@ Ext.define('MyApp.view.Root', {
                                         element:"element"
                                     }
 
-                                }
-
-                                
+                                }                             
                             }
                         ]
+
                     }
                 ]
             }
