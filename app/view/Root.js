@@ -216,8 +216,13 @@ Ext.define('MyApp.view.Root', {
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
-                                html: dropHtml,
                                 title: '드롭'
+                            },
+                            {
+                                xtype: 'panel',
+                                itemId : 'panelHtml',
+                                html: dropHtml
+                                
                             }
                         ]
                     }
