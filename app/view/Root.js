@@ -272,18 +272,35 @@ Ext.define('MyApp.view.Root', {
                             {
                                 xtype: 'panel',
                                 itemId : 'panelHtml',
-                                html: dropHtml,
-                            },
-                        ],
-						listeners: {
-							initialize: function(e) {
-								this.on('activate', function() { 
-									console.log("dd");
-									//html: dropHtml
-									//completedOnDropDownViewLoad()
-								} );
-							}
-						}
+                                html: "<div style='background?color:#00ff00'>드래그<br/>하셔요</div>",
+                                draggable:true,
+                                left:0,
+                                right:0,
+                                top:0,
+                                bottom:0,
+                                width:70,
+                                height:55,
+                                listeners:{
+                                    dragstart:{
+                                        fn:function(event){
+                                        },
+                                        element:"element"
+                                    },
+                                    drag:{
+                                        fn:function(event){
+                                        },
+                                        element:"element"
+                                    },
+                                    dragend:{
+                                        fn:function(event){
+                                        },
+                                        element:"element"
+                                    }
+
+                                }                             
+                            }
+                        ]
+
                     }
                 ]
             }
