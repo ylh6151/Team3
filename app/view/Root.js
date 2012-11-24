@@ -149,20 +149,29 @@ Ext.define('MyApp.view.Root', {
                     {
                         xtype: 'panel',
 						id: 'page0',
-                        items: [
+   						html: '<div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./app/image/button_green.png" style="width:100%;"></div>',
+						items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
                                 title: '탭'
-                            },
-							{
-								xtype:'button',
-								iconMask: true,
-								cls:'cls-star',
-								pressedCls:'cls-star2',
-								pressedDelay:2000,
+                            }
+                        ],
+						listeners: {
+							initialize: function(e) {
+								this.on('activate', function() { 
+									if (document.getElementById('imgGreen'))
+    									document.getElementById('imgGreen').src = "./app/image/button_green.png"
+								} );
+							},
+							tap :{
+								fn : function( event ) {
+									document.getElementById('imgGreen').src = "./app/image/button_red.png"
+								},
+								element : "element"
+
 							}
-                        ]
+						}
                     },
                     {
                         xtype: 'panel',
@@ -172,7 +181,14 @@ Ext.define('MyApp.view.Root', {
                                 xtype: 'titlebar',
                                 docked: 'top',
                                 title: '탭홀드'
-                            }
+                            },
+							{
+								xtype:'button',
+								iconMask: true,
+								cls:'cls-star',
+								pressedCls:'cls-star2',
+								pressedDelay:2000,
+							}
                         ]
                     },
 					{
@@ -222,10 +238,18 @@ Ext.define('MyApp.view.Root', {
                             {
                                 xtype: 'panel',
                                 itemId : 'panelHtml',
-                                html: dropHtml
-                                
-                            }
-                        ]
+                                html: dropHtml,
+                            },
+                        ],
+						listeners: {
+							initialize: function(e) {
+								this.on('activate', function() { 
+									console.log("dd");
+									//html: dropHtml
+									//completedOnDropDownViewLoad()
+								} );
+							}
+						}
                     }
                 ]
             }
