@@ -155,13 +155,53 @@ Ext.define('MyApp.view.Root', {
                                 xtype: 'titlebar',
                                 docked: 'top',
                                 title: '탭'
+                            },
+							{/*Overlay*/
+                                xtype: 'panel',
+								id: 'page0_overlay',
+                                centered: true,  hidden: true, modal: true,
+                                height: '240px', width: '320px',
+								items: [
+                                    {
+                                        xtype: 'video',
+										id: 'myvideo',
+                                        height: '100%',
+                                        width: '100%',
+										
+                                        url: './app/video/CAM00244.mp4',
+                                        posterUrl: './app/video/CAM00244.jpg'
+                                    }
+                                ],
+								listeners: [
+									{
+										fn: function( event ) {
+											Ext.getCmp('page0_overlay').hide( );
+										},
+										event: 'pause',
+										delegate: '#myvideo'
+									}
+									/*질문 두가지
+										오버레이 이벤트발생시 뒷면은 이벤트X
+										초기화시 비디오 자동재생
+									*/
+								]													
                             }
                         ],
 						listeners: {
 							initialize: function(e) {
-								this.on('activate', function() { 
-									if (document.getElementById('imgGreen'))
+								this.on('activate', function() {
+									//alert('page0 가 초기화됩니다.');
+									/*Overlay*/
+									var overlayCmp = Ext.getCmp('page0_overlay');
+
+									overlayCmp.setCentered(true);
+									overlayCmp.show();
+									
+										
+									/*버튼 초기화*/
+									if (document.getElementById('imgGreen')){
     									document.getElementById('imgGreen').src = "./app/image/button_green.png"
+									}
 								} );
 							},
 							tap :{
@@ -187,8 +227,28 @@ Ext.define('MyApp.view.Root', {
 								cls:'cls-star',
 								pressedCls:'cls-star2',
 								pressedDelay:2000,
-							}
-                        ]
+							},
+							{/*Overlay*/
+                                xtype: 'panel',
+								id: 'page1_overlay',
+                                centered: true,  hidden: true, modal: true,
+                                height: '250px', width: '250px'
+                            }
+                        ]/*,
+						listeners: [
+                            {
+                                fn: function(component, options) {
+                                    this.on('activate', function() { 
+                                        var overlayCmp = Ext.getCmp('page1_overlay');
+                                        //console.dir( overlayCmp );
+
+                                        overlayCmp.setCentered(true);
+                                        overlayCmp.show();
+                                    } );
+                                },
+                                event: 'initialize'
+                            }
+                        ]*/
                     },
 					{
                         xtype: 'panel',
@@ -363,8 +423,8 @@ Ext.define('MyApp.view.Root', {
 
 		var index = parseInt(button.initialConfig.num);
         Ext.getCmp('Root').setActiveItem(2);
-        Ext.getCmp('ContentView1').setActiveItem(index);
-
+		Ext.getCmp('ContentView1').setActiveItem(index);
+		
     },
 
     onToolbar_PreTap: function(button, e, options) {
