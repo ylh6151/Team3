@@ -90,7 +90,6 @@ Ext.define('MyApp.view.Root', {
 						num : '4',
                         text: '드롭'
                     }
-
                 ]
             },
             {
@@ -114,6 +113,7 @@ Ext.define('MyApp.view.Root', {
 							},
 							{
                                 xtype: 'button',
+								id:'prebtn',
 								itemId: 'Toolbar_Pre',
                                 iconCls: 'arrow_left',
                                 iconMask: true,
@@ -135,6 +135,7 @@ Ext.define('MyApp.view.Root', {
                             },
                             {
                                 xtype: 'button',
+								id:'nextbtn',
                                 itemId: 'Toolbar_Next',
                                 iconAlign: 'right',
                                 iconCls: 'arrow_right',
@@ -160,6 +161,7 @@ Ext.define('MyApp.view.Root', {
 						listeners: {
 							initialize: function(e) {
 								this.on('activate', function() { 
+									console.log('page0');
 									if (document.getElementById('imgGreen'))
     									document.getElementById('imgGreen').src = "./app/image/button_green.png";
 								} );
@@ -192,7 +194,7 @@ Ext.define('MyApp.view.Root', {
 								iconMask: true,
 								cls:'cls-star',
 								pressedCls:'cls-star2',
-								pressedDelay:2000,
+								pressedDelay:500,
 							}
                         ]
                     },
@@ -267,8 +269,8 @@ Ext.define('MyApp.view.Root', {
                             },
                             {
                                 xtype: 'panel',
-                                itemId : 'panelHtml',
-                                html: "<div style='background?color:#00ff00'>드래그<br/>하셔요</div>",
+								itemId : 'panelHtml',
+                                html: "<div id='dragpanel' style='background?color:#00ff00'>드래그<br/>하셔요</div>",
                                 draggable:true,
                                 left:0,
                                 right:0,
@@ -277,7 +279,7 @@ Ext.define('MyApp.view.Root', {
                                 width:70,
                                 height:55,
                                 listeners:{
-                                    dragstart:{
+									dragstart:{
                                         fn:function(event){
                                         },
                                         element:"element"
@@ -296,13 +298,12 @@ Ext.define('MyApp.view.Root', {
                                 }                             
                             }
                         ]
-
                     }
                 ]
             }
         ],
         listeners: [
-            {
+			{
                 fn: 'onButton_BasicTap',
                 event: 'tap',
                 delegate: '#button_basic'
@@ -351,70 +352,75 @@ Ext.define('MyApp.view.Root', {
     },
 
     onButton_BasicTap: function(button, e, options) {
-        Ext.getCmp('Root').setActiveItem(1);
+        Ext.getCmp('Root').getLayout().setAnimation({type:'slide', direction:'left'});
+		Ext.getCmp('Root').setActiveItem(1);
 		 
     },
 
 	onButton_Chapter1Tap: function(button, e, options) {
 
 		var index = parseInt(button.initialConfig.num);
-        Ext.getCmp('Root').setActiveItem(2);
+        
+		Ext.getCmp('prebtn').setDisabled(false);
+		Ext.getCmp('nextbtn').setDisabled(false);
+		if (index == '0')
+        {
+			Ext.getCmp('prebtn').setDisabled(true);
+        }
+		else if (index == '4')
+		{
+			Ext.getCmp('nextbtn').setDisabled(true);
+		}
+
+		Ext.getCmp('Root').setActiveItem(2);
         Ext.getCmp('ContentView1').setActiveItem(index);
+		
+		
 
     },
 
     onToolbar_PreTap: function(button, e, options) {
-        var rootPanel = Ext.getCmp('ContentView1');//card속성을 가진 RootPanel
+        
+		var rootPanel = Ext.getCmp('ContentView1');//card속성을 가진 RootPanel
         var num_currentView = eval(rootPanel._activeItem.id.slice(4,5)) - 1;//현재뷰에서 한칸 위로
 
-
-        if( num_currentView < 0 ){
-            alert( "홈으로 : ");
-
-            num_currentView = 0;//초기화
-           	rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );
-        }
-		//첫번째 페이지일때 이전버튼 안보이기
-		else if( num_currentView == 0 ){
-           	Ext.getCmp('ContentView1').items.items[0].innerItems[0].disable();
-			rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );
+		if( num_currentView == 0 ){
+			Ext.getCmp('prebtn').setDisabled(true);
+			Ext.getCmp('nextbtn').setDisabled(false);
         }
         else{
-            alert("이전으로");
-
-			rootPanel.getLayout().setAnimation({type:'slide', direction:'right'});        
-			rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );
+            //alert("이전으로");
+			Ext.getCmp('prebtn').setDisabled(false);
+			Ext.getCmp('nextbtn').setDisabled(false);    
         }
+
+		rootPanel.getLayout().setAnimation({type:'slide', direction:'right'});
+		rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );
 
     },
 
     onToolbar_HomeTap: function(button, e, options) {
-        //Ext.getCmp('Root').getLayout().setAnimation({type:'pop'});
+        console.log("Home");
+		Ext.getCmp('Root').getLayout().setAnimation({type:'pop'});
 		Ext.getCmp('Root').setActiveItem(0);
     },
 
     onToolbar_NextTap: function(button, e, options) {
         var rootPanel = Ext.getCmp('ContentView1');//card속성을 가진 RootPanel
         var num_currentView = eval(rootPanel._activeItem.id.slice(4,5)) + 1;//현재뷰에서 한칸 위로
-
-
-        if( num_currentView >= rootPanel.innerItems.length ){
-            alert( "홈으로 : ");
-
-            num_currentView = 0;//초기화
-            rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );
+ 
+		if( num_currentView == 4 ){
+           	Ext.getCmp('prebtn').setDisabled(false);
+			Ext.getCmp('nextbtn').setDisabled(true);
         }
-		//마지막 페이지일때 다음버튼 안보이기
-//		else if( num_currentView == 4 ){
-//           	Ext.getCmp('ContentView1').items.items[0].innerItems[3].hide();
-//			rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );
-//        }
         else{
-            alert("다음으로");
-
-			rootPanel.getLayout().setAnimation({type:'slide', direction:'left'});         
-			rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );
+            //alert("다음으로");
+			Ext.getCmp('prebtn').setDisabled(false);
+			Ext.getCmp('nextbtn').setDisabled(false);
         }
+
+		rootPanel.getLayout().setAnimation({type:'slide', direction:'left'});         
+		rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );
 
     }
 
