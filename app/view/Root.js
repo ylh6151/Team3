@@ -149,7 +149,7 @@ Ext.define('MyApp.view.Root', {
                     {
                         xtype: 'panel',
 						id: 'page0',
-   						html: '<div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./app/image/button_green.png" style="width:100%;"></div>',
+   						html: '<center><div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./app/image/button_green.png" style="width:100%;"></div></center>',
 						items: [
                             {
                                 xtype: 'titlebar',
