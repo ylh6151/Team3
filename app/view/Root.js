@@ -161,12 +161,17 @@ Ext.define('MyApp.view.Root', {
 							initialize: function(e) {
 								this.on('activate', function() { 
 									if (document.getElementById('imgGreen'))
-    									document.getElementById('imgGreen').src = "./app/image/button_green.png"
+    									document.getElementById('imgGreen').src = "./app/image/button_green.png";
 								} );
 							},
 							tap :{
 								fn : function( event ) {
-									document.getElementById('imgGreen').src = "./app/image/button_red.png"
+									if( (document.getElementById('imgGreen').src).lastIndexOf("red.png") < 0){
+										document.getElementById('imgGreen').src = "./app/image/button_red.png";
+									}
+									else{
+										document.getElementById('imgGreen').src = "./app/image/button_green.png";
+									}
 								},
 								element : "element"
 
