@@ -169,7 +169,6 @@ Ext.define('MyApp.view.Root', {
 									document.getElementById('imgGreen').src = "./app/image/button_red.png"
 								},
 								element : "element"
-
 							}
 						}
                     },
@@ -227,20 +226,30 @@ Ext.define('MyApp.view.Root', {
                             }
                         ],
 						listeners: {
+							initialize: function(e) {
+								this.on('activate', function() { 
+									var maxWidth = document.body.clientWidth;
+									
+									document.querySelector( '.cls-pinch' ).style.height = maxWidth/2 + "px"
+									document.querySelector( '.cls-pinch' ).style.width = maxWidth/2 + "px"
+								} );
+							},
 							//tap :{
 							pinch :{
 								fn : function( event ) {	
-									var changedScale
+									var changedScale;
+									var maxWidth = document.body.clientWidth;
+									//alert( maxWidth );
+									
 									
 									if( event.scale > 1){//확대
 										 (event.scale > 1.005 ) ?  changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 1.05  :   changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
 										
-										(changedScale > 500) ? (document.querySelector( '.cls-pinch' ).style.height = "500px") : (document.querySelector( '.cls-pinch' ).style.height = changedScale + "px");
-										(changedScale > 500) ? (document.querySelector( '.cls-pinch' ).style.width = "500px") : (document.querySelector( '.cls-pinch' ).style.width = changedScale + "px");
+										(changedScale > maxWidth) ? (document.querySelector( '.cls-pinch' ).style.height = maxWidth + "px") : (document.querySelector( '.cls-pinch' ).style.height = changedScale + "px");
+										(changedScale > maxWidth) ? (document.querySelector( '.cls-pinch' ).style.width = maxWidth + "px") : (document.querySelector( '.cls-pinch' ).style.width = changedScale + "px");
 										
 									}
 									else{//축소
-										
 										 (event.scale < 0.95 ) ?  changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 0.95  :   changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
 										
 										(changedScale < 100 ) ? (document.querySelector( '.cls-pinch' ).style.height = "100px") : (document.querySelector( '.cls-pinch' ).style.height = changedScale + "px");
