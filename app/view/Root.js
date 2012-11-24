@@ -72,7 +72,7 @@ Ext.define('MyApp.view.Root', {
                         xtype: 'button',
                         itemId: 'button_swip',
                         ui: 'round',
-                        text: '스윕'
+                        text: '스와이프'
                     },
 					{
                         xtype: 'button',
@@ -154,7 +154,6 @@ Ext.define('MyApp.view.Root', {
 							{
 								xtype:'button',
 								cls:'cls-star',
-								pressedDelay:3000,
 								pressedCls:'cls-star2'
 							}
                         ]
@@ -173,13 +172,26 @@ Ext.define('MyApp.view.Root', {
 					{
                         xtype: 'panel',
                         id: 'page2',
+						html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./app/image/pinwheel_aquay.png"></div>',
                         items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
-                                title: '스윕'
+                                title: '스와이프'
                             }
-                        ]
+                        ],
+						listeners: {
+							swipe :{
+								fn : function( event ) {
+									//alert('발생');
+									//console.dir( document.querySelector('.cls-pinwheel') );
+									document.querySelector('.cls-pinwheel').className = 'cls-pinwheel-animation';
+									setTimeout( "document.querySelector('.cls-pinwheel-animation').className = 'cls-pinwheel';" , 3000);
+								},
+								element : "element"
+								
+							}
+						}
                     },
                     {
                         xtype: 'panel',
