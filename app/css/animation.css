@@ -2,14 +2,11 @@
 
 /* Chapter1 : Swip이벤트 관련 */
 .cls-pinwheel{
-    width: 300px;
-	height: 300px;
 	margin: 50px auto;
 }
 
+
 .cls-pinwheel-animation{
-	width: 100%;
-    height: 100%;
 	margin: 50px auto;
 	
 	-webkit-animation-name: myAnimation ;
@@ -22,4 +19,13 @@
 @-webkit-keyframes myAnimation {
 	0%     { -webkit-transform: rotate(0deg); }
 	100% { -webkit-transform: rotate(1800deg); }
+}
+
+/* Chapter1 : Pinch 관련 */
+.cls-pinch{
+	margin: 10px auto;
+
+	background-size: 100% 100%;
+	background-image: url("../image/pinwheel_aquay.png");
+	background-repeat: no-repeat;
 }
