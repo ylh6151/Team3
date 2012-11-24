@@ -59,30 +59,35 @@ Ext.define('MyApp.view.Root', {
                         xtype: 'button',
                         itemId: 'button_tap',
                         ui: 'round',
+						num : '0',
                         text: '탭'
                     },
 					{
                         xtype: 'button',
                         itemId: 'button_taphold',
                         ui: 'round',
+					    num : '1',
                         text: '탭홀드'
                     },
 					{
                         xtype: 'button',
                         itemId: 'button_swip',
                         ui: 'round',
+						num : '2',
                         text: '스와이프'
                     },
 					{
                         xtype: 'button',
                         itemId: 'button_pinch',
                         ui: 'round',
+						num : '3',
                         text: '핀치'
                     },
 					{
                         xtype: 'button',
                         itemId: 'button_drop',
                         ui: 'round',
+						num : '4',
                         text: '드롭'
                     }
 
@@ -274,7 +279,11 @@ Ext.define('MyApp.view.Root', {
     },
 
 	onButton_Chapter1Tap: function(button, e, options) {
+
+		var index = parseInt(button.initialConfig.num);
         Ext.getCmp('Root').setActiveItem(2);
+        Ext.getCmp('ContentView1').setActiveItem(index);
+
     },
 
     onToolbar_PreTap: function(button, e, options) {
