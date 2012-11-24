@@ -153,7 +153,7 @@ Ext.define('MyApp.view.Root', {
 							{
 								xtype:'button',
 								cls:'cls-star',
-								pressedCls:'cls-star2'
+								pressedCls:'cls-star2',
 								pressedDelay:2000,
 							}
                         ]
