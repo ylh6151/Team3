@@ -18,6 +18,7 @@ Ext.define('MyApp.view.Root', {
 
     config: {
         id: 'Root',
+        idc: 'Root',
         layout: {
             type: 'card',
 			animation:'slide'
