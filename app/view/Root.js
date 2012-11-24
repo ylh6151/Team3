@@ -157,6 +157,7 @@ Ext.define('MyApp.view.Root', {
                             },
 							{
 								xtype:'button',
+								iconMask: true,
 								cls:'cls-star',
 								pressedCls:'cls-star2',
 								pressedDelay:2000,
@@ -242,6 +243,12 @@ Ext.define('MyApp.view.Root', {
                                 xtype: 'titlebar',
                                 docked: 'top',
                                 title: '드롭'
+                            },
+                            {
+                                xtype: 'panel',
+                                itemId : 'panelHtml',
+                                html: dropHtml
+                                
                             }
                         ]
                     }
