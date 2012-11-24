@@ -218,7 +218,7 @@ Ext.define('MyApp.view.Root', {
                     {
                         xtype: 'panel',
                         id: 'page3',
-						html: '<div class="cls-pinch" style="width: 300px; height: 300px;"></div>',
+						html: '<center><div class="cls-pinch" style="width: 300px; height: 300px;"></div></center>',
                         items: [
                             {
                                 xtype: 'titlebar',
