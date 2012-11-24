@@ -1,4 +1,6 @@
-﻿var dropHtml = "<div id='bin'></div>";
+﻿
+var wrapDropHtmls = "<div id='wrapDrop'></div>";
+var dropHtml = "<div id='bin'></div>";
 dropHtml = dropHtml + " <ul>";
 dropHtml = dropHtml + "   <li><a width='300px' id='one' href='#'>one</a></li>";
 dropHtml = dropHtml + "   <li><a width='300px' href='#' id='two'>two</a></li>";
