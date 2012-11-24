@@ -157,6 +157,7 @@ Ext.define('MyApp.view.Root', {
                             },
 							{
 								xtype:'button',
+								iconMask: true,
 								cls:'cls-star',
 								pressedCls:'cls-star2',
 								pressedDelay:2000,
