@@ -177,7 +177,7 @@ Ext.define('MyApp.view.Root', {
 					{
                         xtype: 'panel',
                         id: 'page2',
-						html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./app/image/pinwheel_aquay.png"></div>',
+						html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./app/image/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
                         items: [
                             {
                                 xtype: 'titlebar',
@@ -201,13 +201,38 @@ Ext.define('MyApp.view.Root', {
                     {
                         xtype: 'panel',
                         id: 'page3',
+						html: '<div class="cls-pinch" style="width: 300px; height: 300px;"></div>',
                         items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
                                 title: '핀치'
                             }
-                        ]
+                        ],
+						listeners: {
+							//tap :{
+							pinch :{
+								fn : function( event ) {	
+									var changedScale
+									
+									if( event.scale > 1){//확대
+										 (event.scale > 1.005 ) ?  changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 1.05  :   changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+										
+										(changedScale > 500) ? (document.querySelector( '.cls-pinch' ).style.height = "500px") : (document.querySelector( '.cls-pinch' ).style.height = changedScale + "px");
+										(changedScale > 500) ? (document.querySelector( '.cls-pinch' ).style.width = "500px") : (document.querySelector( '.cls-pinch' ).style.width = changedScale + "px");
+										
+									}
+									else{//축소
+										
+										 (event.scale < 0.95 ) ?  changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 0.95  :   changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+										
+										(changedScale < 100 ) ? (document.querySelector( '.cls-pinch' ).style.height = "100px") : (document.querySelector( '.cls-pinch' ).style.height = changedScale + "px");
+										(changedScale < 100 ) ? (document.querySelector( '.cls-pinch' ).style.width = "100px") : (document.querySelector( '.cls-pinch' ).style.width = changedScale + "px");
+									}
+								},
+								element : "element"								
+							}
+						}
                     },
 					{
                         xtype: 'panel',
