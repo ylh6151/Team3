@@ -22,15 +22,20 @@ Ext.define('MyApp.view.Root', {
             type: 'card',
 			animation:'slide'
         },
+		/**************Items**************/
         items: [
             {
                 xtype: 'panel',
                 id: 'Menu',
+				cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
+				
                 items: [
                     {
                         xtype: 'titlebar',
+						cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
                         docked: 'top',
-                        title: '스마트폰길라잡이'
+						
+						title: '길라잡이',						
                     },
                     {
                         xtype: 'button',
@@ -49,10 +54,14 @@ Ext.define('MyApp.view.Root', {
 			{
                 xtype: 'panel',
                 id: 'Basic',
+				cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
+				
                 items: [
                     {
                         xtype: 'titlebar',
+						cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
                         docked: 'top',
+						
                         title: '기본동작'
                     },
                     {
@@ -95,6 +104,8 @@ Ext.define('MyApp.view.Root', {
             {
                 xtype: 'panel',
                 id: 'ContentView1',
+				cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
+				
                 layout: {
                     type: 'card',
 					animation:'slide'
@@ -103,22 +114,17 @@ Ext.define('MyApp.view.Root', {
                     {
                         xtype: 'toolbar',
                         docked: 'bottom',
+						cls: 'cls-toolbar',
+						
                         defaults: {
+							aligh: 'center',
                             iconMask: true,
                             ui: 'plain'
                         },
                         items: [
                             {
 								xtype: 'spacer'
-							},
-							{
-                                xtype: 'button',
-								id:'prebtn',
-								itemId: 'Toolbar_Pre',
-                                iconCls: 'arrow_left',
-                                iconMask: true,
-                                text: '이전으로'
-                            },
+							},							
                             {
                                 xtype: 'button',
                                 itemId: 'Toolbar_Home',
@@ -133,34 +139,54 @@ Ext.define('MyApp.view.Root', {
                                 iconCls: 'refresh',
                                 iconMask: true
                             },
-                            {
-                                xtype: 'button',
-								id:'nextbtn',
-                                itemId: 'Toolbar_Next',
-                                iconAlign: 'right',
-                                iconCls: 'arrow_right',
-                                iconMask: true,
-                                text: '다음으로'
-                            },
 							{
 								xtype: 'spacer'
-							}
+							},	
                         ]
                     },
                     {
                         xtype: 'panel',
+						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
+						
 						id: 'page0',
    						html: '<center><div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./app/image/button_green.png" style="width:100%;"></div></center>',
 						items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
-                                title: '탭'
+								cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
+								
+                                title: '탭',
+								
+								defaults: {
+									iconMask: true,
+									ui: 'plain'
+								},
+								items: [
+									{
+										xtype: 'button',
+										id:'prebtn',
+										itemId: 'Toolbar_Pre',
+										iconCls: 'arrow_left',
+										iconMask: true,
+										text: '이전으로'
+									},
+									{
+										xtype: 'button',
+										id:'nextbtn',
+										itemId: 'Toolbar_Next',
+										align: 'right',
+										iconAlign: 'right',
+										iconCls: 'arrow_right',
+										iconMask: true,
+										text: '다음으로'
+									}
+								]
                             },
 							{/*Overlay*/
                                 xtype: 'panel',
 								id: 'page0_overlay',
-                                centered: true,  hidden: true, modal: true,
+                                centered: true, modal: true,
                                 height: '240px', width: '320px',
 								items: [
                                     {
@@ -207,12 +233,14 @@ Ext.define('MyApp.view.Root', {
 							},
 							tap :{
 								fn : function( event ) {
-									if( (document.getElementById('imgGreen').src).lastIndexOf("red.png") < 0){
-										document.getElementById('imgGreen').src = "./app/image/button_red.png";
-									}
-									else{
-										document.getElementById('imgGreen').src = "./app/image/button_green.png";
-									}
+									if( event.target.nodeName == 'IMG'){
+										if( (document.getElementById('imgGreen').src).lastIndexOf("red.png") < 0){
+											document.getElementById('imgGreen').src = "./app/image/button_red.png";
+										}
+										else{
+											document.getElementById('imgGreen').src = "./app/image/button_green.png";
+										}
+									}									
 								},
 								element : "element"
 							}
@@ -220,37 +248,89 @@ Ext.define('MyApp.view.Root', {
                     },
                     {
                         xtype: 'panel',
+						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
+						
                         id: 'page1',
                         items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
-                                title: '탭홀드'
+								cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
+								
+                                title: '탭홀드',
+								
+								defaults: {
+									iconMask: true,
+									ui: 'plain'
+								},
+								items: [
+									{
+										xtype: 'button',
+										id:'prebtn',
+										itemId: 'Toolbar_Pre',
+										iconCls: 'arrow_left',
+										iconMask: true,
+										text: '이전으로'
+									},
+									{
+										xtype: 'button',
+										id:'nextbtn',
+										itemId: 'Toolbar_Next',
+										align: 'right',
+										iconAlign: 'right',
+										iconCls: 'arrow_right',
+										iconMask: true,
+										text: '다음으로'
+									}
+								]
                             },
 							{
 								xtype:'button',
 								iconMask: true,
 								cls:'cls-star',
 								pressedCls:'cls-star2',
-								pressedDelay: 500,
-							},
-							{/*Overlay*/
-                                xtype: 'panel',
-								id: 'page1_overlay',
-                                centered: true,  hidden: true, modal: true,
-                                height: '250px', width: '250px'
-                            }
+								pressedDelay: 200,
+							}
                         ]
                     },
 					{
                         xtype: 'panel',
+						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
+						
                         id: 'page2',
 						html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./app/image/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
                         items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
-                                title: '스와이프'
+								cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
+								
+                                title: '스와이프',
+								
+								defaults: {
+									iconMask: true,
+									ui: 'plain'
+								},
+								items: [
+									{
+										xtype: 'button',
+										id:'prebtn',
+										itemId: 'Toolbar_Pre',
+										iconCls: 'arrow_left',
+										iconMask: true,
+										text: '이전으로'
+									},
+									{
+										xtype: 'button',
+										id:'nextbtn',
+										itemId: 'Toolbar_Next',
+										align: 'right',
+										iconAlign: 'right',
+										iconCls: 'arrow_right',
+										iconMask: true,
+										text: '다음으로'
+									}
+								]
                             }
                         ],
 						listeners: {
@@ -268,16 +348,46 @@ Ext.define('MyApp.view.Root', {
                     },
                     {
                         xtype: 'panel',
+						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
+						
                         id: 'page3',
-						html: '<center><div class="cls-pinch" style="width: 300px; height: 300px;"></div></center>',
+						html: '<center><div class="cls-pinch" style="width: 319px; height: 631px;"></div></center>',
                         items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
-                                title: '핀치'
+								cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
+								
+                                title: '핀치',
+								
+								defaults: {
+									iconMask: true,
+									ui: 'plain'
+								},
+								items: [
+									{
+										xtype: 'button',
+										id:'prebtn',
+										itemId: 'Toolbar_Pre',
+										iconCls: 'arrow_left',
+										iconMask: true,
+										text: '이전으로'
+									},
+									{
+										xtype: 'button',
+										id:'nextbtn',
+										itemId: 'Toolbar_Next',
+										align: 'right',
+										iconAlign: 'right',
+										iconCls: 'arrow_right',
+										iconMask: true,
+										text: '다음으로'
+									}
+								]
                             }
                         ],
 						listeners: {
+							/*
 							initialize: function(e) {
 								this.on('activate', function() { 
 									var maxWidth = document.body.clientWidth;
@@ -286,26 +396,43 @@ Ext.define('MyApp.view.Root', {
 									document.querySelector( '.cls-pinch' ).style.width = maxWidth/2 + "px"
 								} );
 							},
+							*/
 							//tap :{
 							pinch :{
 								fn : function( event ) {	
 									var changedScale;
 									var maxWidth = document.body.clientWidth;
+									var maxHeight = document.body.clientHeight;
 									//alert( maxWidth );
 									
 									
 									if( event.scale > 1){//확대
-										 (event.scale > 1.005 ) ?  changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 1.05  :   changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+										if( event.scale > 1.005 ){
+											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 1.05;
+											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * 1.05;
+										}
+										else{
+											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * event.scale;
+										}
 										
-										(changedScale > maxWidth) ? (document.querySelector( '.cls-pinch' ).style.height = maxWidth + "px") : (document.querySelector( '.cls-pinch' ).style.height = changedScale + "px");
-										(changedScale > maxWidth) ? (document.querySelector( '.cls-pinch' ).style.width = maxWidth + "px") : (document.querySelector( '.cls-pinch' ).style.width = changedScale + "px");
-										
+										document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
+										document.querySelector( '.cls-pinch' ).style.height = changedScaleHeight + "px";
 									}
 									else{//축소
-										 (event.scale < 0.95 ) ?  changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 0.95  :   changedScale =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+										if( event.scale < 0.95 ){
+											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 0.95;
+											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * 0.95;
+										}
+										else{
+											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * event.scale;
+										}
 										
-										(changedScale < 100 ) ? (document.querySelector( '.cls-pinch' ).style.height = "100px") : (document.querySelector( '.cls-pinch' ).style.height = changedScale + "px");
-										(changedScale < 100 ) ? (document.querySelector( '.cls-pinch' ).style.width = "100px") : (document.querySelector( '.cls-pinch' ).style.width = changedScale + "px");
+										if( changedScaleWidth > 100){//클때만 이벤트 적용
+											document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
+											document.querySelector( '.cls-pinch' ).style.height = changedScaleHeight + "px";
+										}
 									}
 								},
 								element : "element"								
@@ -314,12 +441,41 @@ Ext.define('MyApp.view.Root', {
                     },
 					{
                         xtype: 'panel',
+						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
+						
                         id: 'page4',
                         items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
-                                title: '드롭'
+								cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
+								
+                                title: '드롭',
+								
+								defaults: {
+									iconMask: true,
+									ui: 'plain'
+								},
+								items: [
+									{
+										xtype: 'button',
+										id:'prebtn',
+										itemId: 'Toolbar_Pre',
+										iconCls: 'arrow_left',
+										iconMask: true,
+										text: '이전으로'
+									},
+									{
+										xtype: 'button',
+										id:'nextbtn',
+										itemId: 'Toolbar_Next',
+										align: 'right',
+										iconAlign: 'right',
+										iconCls: 'arrow_right',
+										iconMask: true,
+										text: '다음으로'
+									}
+								]
                             },
                             {
                                 xtype: 'panel',
@@ -356,6 +512,7 @@ Ext.define('MyApp.view.Root', {
                 ]
             }
         ],
+		/**************Listeners**************/
         listeners: [
 			{
                 fn: 'onButton_BasicTap',
@@ -386,29 +543,29 @@ Ext.define('MyApp.view.Root', {
                 fn: 'onButton_Chapter1Tap',
                 event: 'tap',
                 delegate: '#button_drop'
-            },
-            {
-                fn: 'onToolbar_PreTap',
+            },            
+			{
+                fn: 'onTitle_PreTap',
                 event: 'tap',
                 delegate: '#Toolbar_Pre'
             },
             {
+                fn: 'onTitle_NextTap',
+                event: 'tap',
+                delegate: '#Toolbar_Next'
+            },
+			{
                 fn: 'onToolbar_HomeTap',
                 event: 'tap',
                 delegate: '#Toolbar_Home'
-            },
-            {
-                fn: 'onToolbar_NextTap',
-                event: 'tap',
-                delegate: '#Toolbar_Next'
             }
         ]
     },
 
+	/**************Listeners Function**************/
     onButton_BasicTap: function(button, e, options) {
         Ext.getCmp('Root').getLayout().setAnimation({type:'slide', direction:'left'});
 		Ext.getCmp('Root').setActiveItem(1);
-		 
     },
 
 	onButton_Chapter1Tap: function(button, e, options) {
@@ -430,49 +587,57 @@ Ext.define('MyApp.view.Root', {
         Ext.getCmp('ContentView1').setActiveItem(index);
     },
 
-    onToolbar_PreTap: function(button, e, options) {
-        
+	//Title Bar
+	onTitle_PreTap: function(button, e, options) {		
+        //1. 이동
 		var rootPanel = Ext.getCmp('ContentView1');//card속성을 가진 RootPanel
-        var num_currentView = eval(rootPanel._activeItem.id.slice(4,5)) - 1;//현재뷰에서 한칸 위로
-
-		if( num_currentView == 0 ){
-			Ext.getCmp('prebtn').setDisabled(true);
-			Ext.getCmp('nextbtn').setDisabled(false);
-        }
-        else{
-            //alert("이전으로");
-			Ext.getCmp('prebtn').setDisabled(false);
-			Ext.getCmp('nextbtn').setDisabled(false);    
-        }
-
-		rootPanel.getLayout().setAnimation({type:'slide', direction:'right'});
-		rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );
-
+		var num_cardSize = rootPanel.innerItems.length;
+		var num_currentView = eval(rootPanel._activeItem.id.slice(4,5)) - 1;//현재뷰에서 한칸 뒤로
+		
+		//console.log( MaxCardSize );
+		if( num_currentView >= 0 ){//범위내일때만 동작
+			rootPanel.getLayout().setAnimation({type:'slide', direction:'right'});
+			rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );			
+			
+			if( num_currentView == 0 ){//맨끝일때
+				Ext.getCmp('prebtn').setDisabled(true);
+				Ext.getCmp('nextbtn').setDisabled(false);
+			}
+			else{
+				Ext.getCmp('prebtn').setDisabled(false);
+				Ext.getCmp('nextbtn').setDisabled(false);
+			}
+		}
     },
 
-    onToolbar_HomeTap: function(button, e, options) {
+    
+	onTitle_NextTap: function(button, e, options) {		
+        //1. 이동
+		var rootPanel = Ext.getCmp('ContentView1');//card속성을 가진 RootPanel
+		var num_cardSize = rootPanel.innerItems.length;
+		var num_currentView = eval(rootPanel._activeItem.id.slice(4,5)) + 1;//현재뷰에서 한칸 앞으로
+		
+		//console.log( MaxCardSize );
+		if( num_currentView < num_cardSize ){//범위내일때만 동작
+			rootPanel.getLayout().setAnimation({type:'slide', direction:'left'});
+			rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );			
+			
+			if( num_currentView == (num_cardSize-1) ){//맨끝일때
+				Ext.getCmp('prebtn').setDisabled(false);
+				Ext.getCmp('nextbtn').setDisabled(true);
+			}
+			else{
+				Ext.getCmp('prebtn').setDisabled(false);
+				Ext.getCmp('nextbtn').setDisabled(false);
+			}
+		}
+    },
+	
+	//Tool Bar
+	onToolbar_HomeTap: function(button, e, options) {
         console.log("Home");
 		Ext.getCmp('Root').getLayout().setAnimation({type:'pop'});
 		Ext.getCmp('Root').setActiveItem(0);
     },
-
-    onToolbar_NextTap: function(button, e, options) {
-        var rootPanel = Ext.getCmp('ContentView1');//card속성을 가진 RootPanel
-        var num_currentView = eval(rootPanel._activeItem.id.slice(4,5)) + 1;//현재뷰에서 한칸 위로
- 
-		if( num_currentView == 4 ){
-           	Ext.getCmp('prebtn').setDisabled(false);
-			Ext.getCmp('nextbtn').setDisabled(true);
-        }
-        else{
-            //alert("다음으로");
-			Ext.getCmp('prebtn').setDisabled(false);
-			Ext.getCmp('nextbtn').setDisabled(false);
-        }
-
-		rootPanel.getLayout().setAnimation({type:'slide', direction:'left'});         
-		rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );
-
-    }
 
 });
