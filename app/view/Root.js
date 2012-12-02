@@ -101,16 +101,54 @@ Ext.define('MyApp.view.Root', {
                     }
                 ]
             },
+			
+			/* 기본동작 View입니다. */
             {
-                xtype: 'panel',
+				xtype: 'panel',
                 id: 'ContentView1',
 				cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
+				
 				
                 layout: {
                     type: 'card',
 					animation:'slide'
                 },
                 items: [
+					//1. TitleBar
+					{
+						xtype: 'titlebar',
+						id: 'ContentView1-titlebar',
+						
+						docked: 'top',
+						cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
+						/*
+						defaults: {
+							iconMask: true,
+							ui: 'plain'
+						},
+						*/
+						items: [
+							{
+								xtype: 'button',
+								id:'Toolbar_Pre',
+								//itemId: 'Toolbar_Pre',
+								//iconCls: 'arrow_left',
+								ui: 'back',								 
+								text: '이전으로'
+							},
+							{
+								xtype: 'button',
+								id:'Toolbar_Next',								
+								align: 'right',
+								//iconAlign: 'right',
+								//iconCls: 'arrow_right',
+								ui: 'forward',								 
+								text: '다음으로'
+							}
+						]
+					},
+					
+					//2. ToolBar
                     {
                         xtype: 'toolbar',
                         docked: 'bottom',
@@ -144,49 +182,19 @@ Ext.define('MyApp.view.Root', {
 							},	
                         ]
                     },
+					
+					//3. ContentView
                     {
                         xtype: 'panel',
-						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
-						
-						id: 'page0',
+						id: 'page0',		
+						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/					
    						html: '<center><div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./app/image/button_green.png" style="width:100%;"></div></center>',
+						
 						items: [
-                            {
-                                xtype: 'titlebar',
-                                docked: 'top',
-								cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
-								
-                                title: '탭',
-								
-								defaults: {
-									iconMask: true,
-									ui: 'plain'
-								},
-								items: [
-									{
-										xtype: 'button',
-										id:'prebtn',
-										itemId: 'Toolbar_Pre',
-										iconCls: 'arrow_left',
-										iconMask: true,
-										text: '이전으로'
-									},
-									{
-										xtype: 'button',
-										id:'nextbtn',
-										itemId: 'Toolbar_Next',
-										align: 'right',
-										iconAlign: 'right',
-										iconCls: 'arrow_right',
-										iconMask: true,
-										text: '다음으로'
-									}
-								]
-                            },
 							{/*Overlay*/
                                 xtype: 'panel',
 								id: 'page0_overlay',
-                                centered: true, modal: true,
+								centered: true,  hidden: true, modal: true,
                                 height: '240px', width: '320px',
 								items: [
                                     {
@@ -194,7 +202,6 @@ Ext.define('MyApp.view.Root', {
 										id: 'myvideo',
                                         height: '100%',
                                         width: '100%',
-										
                                         url: './app/video/CAM00244.mp4',
                                         posterUrl: './app/video/CAM00244.jpg'
                                     }
@@ -202,15 +209,13 @@ Ext.define('MyApp.view.Root', {
 								listeners: [
 									{
 										fn: function( event ) {
-											Ext.getCmp('page0_overlay').hide( );
+											var overlayCmp = Ext.getCmp('page0_overlay');
+											overlayCmp.setCentered(false);
+											overlayCmp.hide();
 										},
 										event: 'pause',
 										delegate: '#myvideo'
 									}
-									/*질문 두가지
-										오버레이 이벤트발생시 뒷면은 이벤트X
-										초기화시 비디오 자동재생
-									*/
 								]													
                             }
                         ],
@@ -220,7 +225,6 @@ Ext.define('MyApp.view.Root', {
 									//alert('page0 가 초기화됩니다.');
 									/*Overlay*/
 									var overlayCmp = Ext.getCmp('page0_overlay');
-
 									overlayCmp.setCentered(true);
 									overlayCmp.show();
 									
@@ -246,44 +250,14 @@ Ext.define('MyApp.view.Root', {
 							}
 						}
                     },
+					
                     {
+						title: '탭홀드',
                         xtype: 'panel',
 						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
 						
                         id: 'page1',
                         items: [
-                            {
-                                xtype: 'titlebar',
-                                docked: 'top',
-								cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
-								
-                                title: '탭홀드',
-								
-								defaults: {
-									iconMask: true,
-									ui: 'plain'
-								},
-								items: [
-									{
-										xtype: 'button',
-										id:'prebtn',
-										itemId: 'Toolbar_Pre',
-										iconCls: 'arrow_left',
-										iconMask: true,
-										text: '이전으로'
-									},
-									{
-										xtype: 'button',
-										id:'nextbtn',
-										itemId: 'Toolbar_Next',
-										align: 'right',
-										iconAlign: 'right',
-										iconCls: 'arrow_right',
-										iconMask: true,
-										text: '다음으로'
-									}
-								]
-                            },
 							{
 								xtype:'button',
 								iconMask: true,
@@ -293,51 +267,17 @@ Ext.define('MyApp.view.Root', {
 							}
                         ]
                     },
+					
 					{
+						title: '스와이프',
                         xtype: 'panel',
 						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
 						
                         id: 'page2',
 						html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./app/image/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
-                        items: [
-                            {
-                                xtype: 'titlebar',
-                                docked: 'top',
-								cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
-								
-                                title: '스와이프',
-								
-								defaults: {
-									iconMask: true,
-									ui: 'plain'
-								},
-								items: [
-									{
-										xtype: 'button',
-										id:'prebtn',
-										itemId: 'Toolbar_Pre',
-										iconCls: 'arrow_left',
-										iconMask: true,
-										text: '이전으로'
-									},
-									{
-										xtype: 'button',
-										id:'nextbtn',
-										itemId: 'Toolbar_Next',
-										align: 'right',
-										iconAlign: 'right',
-										iconCls: 'arrow_right',
-										iconMask: true,
-										text: '다음으로'
-									}
-								]
-                            }
-                        ],
 						listeners: {
 							swipe :{
 								fn : function( event ) {
-									//alert('발생');
-									//console.dir( document.querySelector('.cls-pinwheel') );
 									document.querySelector('.cls-pinwheel').className = 'cls-pinwheel-animation';
 									setTimeout( "document.querySelector('.cls-pinwheel-animation').className = 'cls-pinwheel';" , 3000);
 								},
@@ -346,46 +286,15 @@ Ext.define('MyApp.view.Root', {
 							}
 						}
                     },
+					
                     {
+						title: '핀치',
                         xtype: 'panel',
 						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
 						
                         id: 'page3',
 						html: '<center><div class="cls-pinch" style="width: 319px; height: 631px;"></div></center>',
-                        items: [
-                            {
-                                xtype: 'titlebar',
-                                docked: 'top',
-								cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
-								
-                                title: '핀치',
-								
-								defaults: {
-									iconMask: true,
-									ui: 'plain'
-								},
-								items: [
-									{
-										xtype: 'button',
-										id:'prebtn',
-										itemId: 'Toolbar_Pre',
-										iconCls: 'arrow_left',
-										iconMask: true,
-										text: '이전으로'
-									},
-									{
-										xtype: 'button',
-										id:'nextbtn',
-										itemId: 'Toolbar_Next',
-										align: 'right',
-										iconAlign: 'right',
-										iconCls: 'arrow_right',
-										iconMask: true,
-										text: '다음으로'
-									}
-								]
-                            }
-                        ],
+                        
 						listeners: {
 							/*
 							initialize: function(e) {
@@ -439,44 +348,14 @@ Ext.define('MyApp.view.Root', {
 							}
 						}
                     },
+					
 					{
+						title: '드래그',
                         xtype: 'panel',
 						cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
 						
                         id: 'page4',
                         items: [
-                            {
-                                xtype: 'titlebar',
-                                docked: 'top',
-								cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
-								
-                                title: '드롭',
-								
-								defaults: {
-									iconMask: true,
-									ui: 'plain'
-								},
-								items: [
-									{
-										xtype: 'button',
-										id:'prebtn',
-										itemId: 'Toolbar_Pre',
-										iconCls: 'arrow_left',
-										iconMask: true,
-										text: '이전으로'
-									},
-									{
-										xtype: 'button',
-										id:'nextbtn',
-										itemId: 'Toolbar_Next',
-										align: 'right',
-										iconAlign: 'right',
-										iconCls: 'arrow_right',
-										iconMask: true,
-										text: '다음으로'
-									}
-								]
-                            },
                             {
                                 xtype: 'panel',
 								itemId : 'panelHtml',
@@ -512,6 +391,7 @@ Ext.define('MyApp.view.Root', {
                 ]
             }
         ],
+		
 		/**************Listeners**************/
         listeners: [
 			{
@@ -569,43 +449,58 @@ Ext.define('MyApp.view.Root', {
     },
 
 	onButton_Chapter1Tap: function(button, e, options) {
-
 		var index = parseInt(button.initialConfig.num);
+		var titleBar = Ext.getCmp('ContentView1-titlebar');//RootPanel의 TitleBar
         
-		Ext.getCmp('prebtn').setDisabled(false);
-		Ext.getCmp('nextbtn').setDisabled(false);
+		Ext.getCmp('Toolbar_Pre').setDisabled(false);
+		Ext.getCmp('Toolbar_Next').setDisabled(false);
 		if (index == '0')
         {
-			Ext.getCmp('prebtn').setDisabled(true);
+			Ext.getCmp('Toolbar_Pre').hide();
+			Ext.getCmp('Toolbar_Next').show();
         }
 		else if (index == '4')
 		{
-			Ext.getCmp('nextbtn').setDisabled(true);
+			Ext.getCmp('Toolbar_Pre').show();
+			Ext.getCmp('Toolbar_Next').hide();
+		}
+		else{
+			Ext.getCmp('Toolbar_Pre').show();
+			Ext.getCmp('Toolbar_Next').show();
 		}
 
 		Ext.getCmp('Root').setActiveItem(2);
         Ext.getCmp('ContentView1').setActiveItem(index);
+		titleBar.setTitle( button.getText() );
     },
 
 	//Title Bar
 	onTitle_PreTap: function(button, e, options) {		
         //1. 이동
 		var rootPanel = Ext.getCmp('ContentView1');//card속성을 가진 RootPanel
+		var titleBar = Ext.getCmp('ContentView1-titlebar');//RootPanel의 TitleBar
+		var table = Ext.getCmp('Basic');//RootPannel에 접근하는 목차에 접근합니다. text를 Title에 적어주기 위해서입니다.
+		
 		var num_cardSize = rootPanel.innerItems.length;
-		var num_currentView = eval(rootPanel._activeItem.id.slice(4,5)) - 1;//현재뷰에서 한칸 뒤로
+		var num_currentView = eval(rootPanel.getActiveItem().getItemId().slice(4,5));
+		var num_preView = num_currentView - 1;//현재뷰에서 한칸 뒤로
+		//alert("지금 : " + num_currentView + "다음 : " + num_preView );
 		
 		//console.log( MaxCardSize );
-		if( num_currentView >= 0 ){//범위내일때만 동작
+		if( num_preView >= 0 ){//범위내일때만 동작
 			rootPanel.getLayout().setAnimation({type:'slide', direction:'right'});
-			rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );			
+			rootPanel.setActiveItem( Ext.getCmp('page' + num_preView ) );			
+			titleBar.setTitle( table.items.items[num_preView+1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
 			
-			if( num_currentView == 0 ){//맨끝일때
-				Ext.getCmp('prebtn').setDisabled(true);
-				Ext.getCmp('nextbtn').setDisabled(false);
+			//console.dir( table.items.items[0].getTitle() );
+			
+			if( num_preView == 0 ){//맨끝일때
+				Ext.getCmp('Toolbar_Pre').hide();
+				Ext.getCmp('Toolbar_Next').show();
 			}
 			else{
-				Ext.getCmp('prebtn').setDisabled(false);
-				Ext.getCmp('nextbtn').setDisabled(false);
+				Ext.getCmp('Toolbar_Pre').show();
+				Ext.getCmp('Toolbar_Next').show();
 			}
 		}
     },
@@ -614,21 +509,27 @@ Ext.define('MyApp.view.Root', {
 	onTitle_NextTap: function(button, e, options) {		
         //1. 이동
 		var rootPanel = Ext.getCmp('ContentView1');//card속성을 가진 RootPanel
+		var titleBar = Ext.getCmp('ContentView1-titlebar');//RootPanel의 TitleBar
+		var table = Ext.getCmp('Basic');//RootPannel에 접근하는 목차에 접근합니다. text를 Title에 적어주기 위해서입니다.
+
 		var num_cardSize = rootPanel.innerItems.length;
-		var num_currentView = eval(rootPanel._activeItem.id.slice(4,5)) + 1;//현재뷰에서 한칸 앞으로
+		var num_currentView = eval(rootPanel._activeItem.id.slice(4,5));//현재뷰에서 한칸 앞으로
+		var num_nextView = num_currentView + 1;//현재뷰에서 한칸 앞으로
 		
+		//alert("지금 : " + num_currentView + "다음 : " + num_nextView );
 		//console.log( MaxCardSize );
-		if( num_currentView < num_cardSize ){//범위내일때만 동작
+		if( num_nextView < num_cardSize ){//범위내일때만 동작
 			rootPanel.getLayout().setAnimation({type:'slide', direction:'left'});
-			rootPanel.setActiveItem( Ext.getCmp('page' + num_currentView ) );			
+			rootPanel.setActiveItem( Ext.getCmp('page' + num_nextView ) );			
+			titleBar.setTitle( table.items.items[num_nextView+1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
 			
-			if( num_currentView == (num_cardSize-1) ){//맨끝일때
-				Ext.getCmp('prebtn').setDisabled(false);
-				Ext.getCmp('nextbtn').setDisabled(true);
+			if( num_nextView == (num_cardSize-1) ){//맨끝일때
+				Ext.getCmp('Toolbar_Pre').show();
+				Ext.getCmp('Toolbar_Next').hide();
 			}
 			else{
-				Ext.getCmp('prebtn').setDisabled(false);
-				Ext.getCmp('nextbtn').setDisabled(false);
+				Ext.getCmp('Toolbar_Pre').show();
+				Ext.getCmp('Toolbar_Next').show();
 			}
 		}
     },
