@@ -1,0 +1,29 @@
+.cls-content{
+	background-image: url("../images/second/bg.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.cls-title{
+	background-image: url("../images/second/header.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.cls-toolbar{
+	background-image: url("../images/second/footer.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;	
+}
+
+.cls-pretab{
+	background-image: url("../images/second/back.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.cls-nexttab{
+	background-image: url("../images/second/next.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}

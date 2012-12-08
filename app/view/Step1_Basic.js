@@ -26,8 +26,9 @@
 						xtype: 'button',
 						id:'Toolbar_Pre',
 						//itemId: 'Toolbar_Pre',
-						//iconCls: 'arrow_left',
-						ui: 'back',								 
+						//iconMask: true,
+						//iconCls: 'cls-pretab',
+						ui: 'back',
 						text: '이전으로'
 					},
 					{
@@ -125,7 +126,7 @@
 				xtype: 'panel',
 				id: 'page1',		
 				cls: 'cls-content',			
-				html: '<center><div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./app/image/button_green.png" style="width:100%;"></div></center>',
+				html: '<center><div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./resources/images/button_green.png" style="width:100%;"></div></center>',
 				
 				items: [
 					{//Overlay
@@ -167,7 +168,7 @@
 								
 							//버튼 초기화
 							if (document.getElementById('imgGreen')){
-								document.getElementById('imgGreen').src = "./app/image/button_green.png";
+								document.getElementById('imgGreen').src = "./resources/images/button_green.png";
 							}
 						});
 					},
@@ -175,10 +176,10 @@
 						fn : function( event ) {
 							if( event.target.nodeName == 'IMG'){
 								if( (document.getElementById('imgGreen').src).lastIndexOf("red.png") < 0){
-									document.getElementById('imgGreen').src = "./app/image/button_red.png";
+									document.getElementById('imgGreen').src = "./resources/images/button_red.png";
 								}
 								else{
-									document.getElementById('imgGreen').src = "./app/image/button_green.png";
+									document.getElementById('imgGreen').src = "./resources/images/button_green.png";
 								}
 							}									
 						},
@@ -210,7 +211,7 @@
 				cls: 'cls-content',
 				
 				id: 'page3',
-				html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./app/image/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
+				html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./resources/images/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
 				listeners: {
 					swipe :{
 						fn : function( event ) {

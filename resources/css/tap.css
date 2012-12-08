@@ -1,6 +1,6 @@
 .cls-star{
 	border: 0px;
-	background-image:url(../image/star.png);
+	background-image:url(../images/star.png);
 	background-color: transparent;
 	background-size: 100% 100%;
 	position: absolute;
@@ -11,7 +11,7 @@
 
 .cls-star2{
 	border: 0px;
-	background-image:url(../image/star2.png);
+	background-image:url(../images/star2.png);
 	background-color: transparent;
 	background-size: 100% 100%;
 	position: absolute;

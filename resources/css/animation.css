@@ -1,0 +1,31 @@
+﻿@charset "utf-8";
+
+/* Chapter1 : Swip이벤트 관련 */
+.cls-pinwheel{
+	margin: 50px auto;
+}
+
+
+.cls-pinwheel-animation{
+	margin: 50px auto;
+	
+	-webkit-animation-name: myAnimation ;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-direction: alternate;	
+	animation-timing-function : ease-out;
+}
+
+@-webkit-keyframes myAnimation {
+	0%     { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(1800deg); }
+}
+
+/* Chapter1 : Pinch 관련 */
+.cls-pinch{
+	margin: 10px auto;
+
+	background-size: 100% 100%;
+	background-image: url("../images/eyesight.gif");
+	background-repeat: no-repeat;
+}
