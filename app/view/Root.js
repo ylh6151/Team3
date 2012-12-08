@@ -1,8 +1,9 @@
 Ext.define('MyApp.view.Root', {
     extend: 'Ext.Container',
-
+    cls: 'cls-content',
     config: {
-        id: 'Root',
+    	//cls: 'cls-content',
+    	id: 'Root',
         layout: {
             type: 'card',
 			animation:'slide'

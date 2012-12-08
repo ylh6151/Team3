@@ -25,11 +25,11 @@
 					{
 						xtype: 'button',
 						id:'Toolbar_Pre',
-						//itemId: 'Toolbar_Pre',
-						//iconMask: true,
 						//iconCls: 'cls-pretab',
-						ui: 'back',
-						text: '이전으로'
+						iconMask: true,
+						cls:'cls-pretab',
+						//ui: 'back',
+						//text: '이전으로'
 					},
 					{
 						xtype: 'button',
@@ -50,7 +50,7 @@
 				
 				defaults: {
 					aligh: 'center',
-					iconMask: true,
+					//iconMask: true,
 					ui: 'plain'
 				},
 				items: [
@@ -61,15 +61,15 @@
 						xtype: 'button',
 						itemId: 'Toolbar_Home',
 						iconAlign: 'center',
-						iconCls: 'home',
-						iconMask: true
+						iconCls: 'cls-home',
+						//iconMask: true
 					},
 					{
 						xtype: 'button',
 						itemId: 'Toolbar_Refresh',
 						iconAlign: 'center',
-						iconCls: 'refresh',
-						iconMask: true
+						iconCls: 'cls-refresh',
+						//iconMask: true
 					},
 					{
 						xtype: 'spacer'
@@ -200,7 +200,7 @@
 						iconMask: true,
 						cls:'cls-star',
 						pressedCls:'cls-star2',
-						pressedDelay: 200,
+						pressedDelay: 300,
 					}
 				]
 			},
