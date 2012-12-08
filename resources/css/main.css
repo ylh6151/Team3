@@ -39,10 +39,14 @@
 	background-image: url("../images/second/home.png");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
+	width: 38px !important;
+	height: 38px !important;
 }
 
 .cls-refresh{
 	background-image: url("../images/second/re.png");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
+	width: 35px !important;
+	height: 35px !important;
 }
