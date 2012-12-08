@@ -1,18 +1,18 @@
 .cls-content{
-	background-image: url("../images/second/bg.jpg");
+	background-image: url("../images/body.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
 
 .cls-title{
-	background-image: url("../images/second/header.jpg");
+	background-image: url("../images/header.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	border-bottom : 0 !important;
 }
 
 .cls-toolbar{
-	background-image: url("../images/second/footer.jpg");
+	background-image: url("../images/footer.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;	
 	border-top: 0 !important;
