@@ -25,20 +25,15 @@
 					{
 						xtype: 'button',
 						id:'Toolbar_Pre',
-						//iconCls: 'cls-pretab',
-						iconMask: true,
 						cls:'cls-pretab',
-						//ui: 'back',
-						//text: '이전으로'
+						width: '60px'
 					},
 					{
 						xtype: 'button',
 						id:'Toolbar_Next',								
 						align: 'right',
-						//iconAlign: 'right',
-						//iconCls: 'arrow_right',
-						ui: 'forward',								 
-						text: '다음으로'
+						cls:'cls-nexttab',
+						width: '60px'
 					}
 				]
 			},
