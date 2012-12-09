@@ -1,7 +1,7 @@
-.cls-star{
+.cls-star{/*기본*/
 	border: 0px;
-	background-image:url(../images/star.png);
-	background-color: transparent;
+	background-image:url(../images/star.png) !important;
+	background-color: transparent !important;
 	background-size: 100% 100%;
 	position: absolute;
 	width: 50%;
@@ -9,13 +9,36 @@
 	left: 20%;
 }
 
-.cls-star2{
+.cls-star2{/*탭홀드*/
 	border: 0px;
-	background-image:url(../images/star2.png);
-	background-color: transparent;
+	background-image:url(../images/star2.png) !important;
+	background-color: transparent !important;
 	background-size: 100% 100%;
 	position: absolute;
 	width: 50%;
 	height: 50%;
 	left: 20%;
+}
+
+.cls-starhold{/*터치스타트*/
+	border: 0px;
+	background-image:url(../images/second/q.png) !important;
+	background-color: transparent !important;
+	background-size: 100% 100%;
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 20%;
+	
+	-webkit-animation-name: tapHoldAnimation ;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 5
+}
+
+@-webkit-keyframes tapHoldAnimation {
+	0%     { -webkit-transform: translate(5px, 0px); }
+	25%     { -webkit-transform: translate(-5px, 0px); }
+	50%     { -webkit-transform: translate(5px, 0px); }
+	75%     { -webkit-transform: translate(-5px, 0px); }
+	100% { -webkit-transform: translate(5px, 0px); }
 }

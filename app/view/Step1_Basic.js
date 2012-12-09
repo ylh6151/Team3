@@ -179,10 +179,32 @@
 				items: [
 					{
 						xtype:'button',
+						id:'tapholdbtn',
 						iconMask: true,
 						cls:'cls-star',
-						pressedCls:'cls-star2',
-						pressedDelay: 300,
+						//pressedCls:'cls-star2',
+						//pressedDelay: 300,
+						
+						listeners:{
+							touchstart :{
+								fn : function( event ) {
+									Ext.getCmp('tapholdbtn').setCls("cls-starhold");
+									console.dir("touchstart");
+									console.dir(event);
+									
+								},
+								element:"element"
+							},
+							taphold :{
+								fn : function( event ) {
+									Ext.getCmp('tapholdbtn').setCls("cls-star2");
+									console.dir("taphold");
+									console.dir(event);
+									
+								},
+								element:"element"
+							}
+						}
 					}
 				],
 				
@@ -190,6 +212,8 @@
 					initialize: function(e) {
 						this.on('activate', function() {
 							//TitleBar 설정
+							Ext.getCmp('tapholdbtn').setCls("cls-star");
+							
 							Ext.getCmp('Toolbar_Pre').show();
 							Ext.getCmp('Toolbar_Next').show();
 							
@@ -202,7 +226,7 @@
 							overlayCmp.setCentered(true);
 							overlayCmp.show();
 						});
-					}
+					},
 				}
 			},
 			
