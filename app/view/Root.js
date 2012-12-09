@@ -16,6 +16,9 @@ Ext.define('MyApp.view.Root', {
 			{
                 xtype: 'Step1_Basic',//기본동작 View입니다.
             },
+            {
+                xtype: 'Step2_Phone',//기본동작 View입니다.
+            },
 			//OverLay
 			{
 				xtype: 'panel',

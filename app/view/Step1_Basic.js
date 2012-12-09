@@ -131,8 +131,25 @@
 				xtype: 'panel',
 				id: 'page1',		
 				cls: 'cls-content',			
-				html: '<div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./resources/images/button_green.png" style="width:100%;"></div>',
-				
+				//html: '<div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./resources/images/button_green.png" style="width:100%;"></div>',
+				items:[
+					{
+						xtype: 'button',
+						cls: 'cls-greenbtn',
+						id:'greenbtn',
+							
+						listeners:{
+							tap :{
+								fn : function( event ) {
+									Ext.getCmp('greenbtn').setCls("cls-redbtn");
+									
+								},
+								element:"element"
+							},
+						}
+					},
+				],
+					
 				listeners: {					
 					initialize: function(e) {
 						this.on('activate', function() {						
@@ -145,13 +162,14 @@
 							//Ext.getCmp('Root').query('#Overlay')[0].show();
 								
 							//버튼 초기화
-							if (document.getElementById('imgGreen')){
+							/*if (document.getElementById('imgGreen')){
 								document.getElementById('imgGreen').src = "./resources/images/button_green.png";
-							}						
+							}*/	
+							Ext.getCmp('greenbtn').setCls("cls-greenbtn");
 						});					
 					},
 					
-					tap :{
+					/*tap :{
 						fn : function( event ) {
 							if( event.target.nodeName == 'IMG'){
 								if( (document.getElementById('imgGreen').src).lastIndexOf("red.png") < 0){
@@ -163,10 +181,9 @@
 							}
 						},
 						element : "element"
-					}
+					}*/
 				}
 			},
-			
 			{
 				title: '탭홀드',
 				xtype: 'panel',
@@ -179,8 +196,6 @@
 						id:'tapholdbtn',
 						iconMask: true,
 						cls:'cls-star',
-						//pressedCls:'cls-star2',
-						//pressedDelay: 300,
 						
 						listeners:{
 							touchstart :{
@@ -200,6 +215,15 @@
 									
 								},
 								element:"element"
+							},
+							touchend :{
+								fn : function( event ) {
+									Ext.getCmp('tapholdbtn').setCls("cls-star");
+									console.dir("touchend");
+									console.dir(event);
+									
+								},
+								element:"element"
 							}
 						}
 					}
@@ -209,8 +233,6 @@
 					initialize: function(e) {
 						this.on('activate', function() {
 							//TitleBar 설정
-							Ext.getCmp('tapholdbtn').setCls("cls-star");
-							
 							Ext.getCmp('Toolbar_Pre').show();
 							Ext.getCmp('Toolbar_Next').show();
 							

@@ -31,6 +31,11 @@
 				fn: 'onButton_BasicTap',
 				event: 'tap',
 				delegate: '#button_basic'
+			},
+			{
+				fn: 'onButton_PhoneTap',
+				event: 'tap',
+				delegate: '#button_phone'
 			}
 		]
 	},
@@ -40,6 +45,12 @@
 		Ext.getCmp('Root').getLayout().setAnimation({type:'slide', direction:'left'});
 		Ext.getCmp('Root').setActiveItem(1);
 		Ext.getCmp('Step1_Basic').setActiveItem(0);		
+	},
+	onButton_PhoneTap: function(button, e, options) {
+		Ext.getCmp('Root').getLayout().setAnimation({type:'slide', direction:'left'});
+		Ext.getCmp('Root').setActiveItem(2);
+		Ext.getCmp('Step2_Phone').setActiveItem(0);		
 	}
+	
 });
 

@@ -8,6 +8,7 @@ Ext.application({
         'Root',
 		'Menu',
 		'Step1_Basic',
+		'Step2_Phone',
 		'Main'
     ],
     name: 'MyApp',

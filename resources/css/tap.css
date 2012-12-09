@@ -1,3 +1,37 @@
+.cls-greenbtn{
+	border: 0px;
+	background: transparent;
+	
+	background-image: url("../images/button_green.png") !important;
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 300px;
+	margin-top: -150px;
+	margin-left: -150px;
+}
+
+.cls-redbtn{
+	border: 0px;
+	background: transparent;
+	
+	background-image: url("../images/button_red.png") !important;
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 300px;
+	margin-top: -150px;
+	margin-left: -150px;
+}
+
 .cls-star{/*기본*/
 	border: 0px;
 	background-image:url(../images/star.png) !important;
