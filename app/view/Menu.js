@@ -4,31 +4,24 @@
 	id:  'MenuView',       
 	
 	config: {
-		cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
+		cls: 'cls-main',/*backgroundImg가 들어가는 class입니다*/
 		
 		/**************Items**************/
 		items: [
 			{
-				xtype: 'titlebar',
-				docked: 'top',
-				//cls: 'cls-title',/*backgroundImg가 들어가는 class입니다*/
-				
-				title: '스마트폰길라잡이'
-				
-			},
-			{
 				xtype: 'button',
 				itemId: 'button_basic',
-				ui: 'round',
-				
-				text: '기본동작'
+				cls:'cls-basicmenu',
 			},
 			{
 				xtype: 'button',
-				itemId: 'button_phonetext',
-				ui: 'round',
-				
-				text: '전화&문자'
+				itemId: 'button_phone',
+				cls:'cls-phonemenu',
+			},
+			{
+				xtype: 'button',
+				itemId: 'button_text',
+				cls:'cls-textmenu',
 			}
 		],
 		

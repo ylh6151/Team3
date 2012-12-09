@@ -418,7 +418,7 @@
 			
 			//console.dir( table.items.items[0].getTitle() );
 			
-			if( num_preView == 1 ){//맨끝일때
+			if( (num_preView == 1)){//맨끝일때
 				Ext.getCmp('Toolbar_Pre').hide();
 				Ext.getCmp('Toolbar_Next').show();
 			}
