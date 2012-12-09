@@ -81,35 +81,35 @@
 					{
 						xtype: 'button',
 						itemId: 'button_tap',
-						ui: 'round',
+						cls:'cls-basicmenulist',
 						num : '0',
 						text: '탭'
 					},
 					{
 						xtype: 'button',
 						itemId: 'button_taphold',
-						ui: 'round',
+						cls:'cls-basicmenulist',
 						num : '1',
 						text: '탭홀드'
 					},
 					{
 						xtype: 'button',
 						itemId: 'button_swip',
-						ui: 'round',
+						cls:'cls-basicmenulist',
 						num : '2',
 						text: '스와이프'
 					},
 					{
 						xtype: 'button',
 						itemId: 'button_pinch',
-						ui: 'round',
+						cls:'cls-basicmenulist',
 						num : '3',
 						text: '핀치'
 					},
 					{
 						xtype: 'button',
 						itemId: 'button_drop',
-						ui: 'round',
+						cls:'cls-basicmenulist',
 						num : '4',
 						text: '드롭'
 					}
