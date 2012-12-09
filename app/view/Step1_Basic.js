@@ -10,7 +10,7 @@
 			animation:'slide'
 		},
 		
-		items: [
+		items: [			
 			// TitleBar
 			{
 				xtype: 'titlebar',
@@ -113,7 +113,17 @@
 						num : '4',
 						text: '드롭'
 					}
-				]
+				],
+				
+				listeners: {
+					initialize: function(e) {
+						this.on('activate', function() {
+							//TitleBar 설정
+							Ext.getCmp('Toolbar_Pre').hide();
+							Ext.getCmp('Toolbar_Next').hide();
+						});
+					}
+				}
 			},
 			
 			//PageN : ContentView
@@ -122,44 +132,21 @@
 				id: 'page1',		
 				cls: 'cls-content',			
 				html: '<center><div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./resources/images/button_green.png" style="width:100%;"></div></center>',
-				
-				items: [
-					{//Overlay
-						xtype: 'panel',
-						id: 'page0_overlay',
-						centered: true,  hidden: true, modal: true,
-						height: '240px', width: '320px',
-						items: [
-							{
-								xtype: 'video',
-								id: 'myvideo',
-								height: '100%',
-								width: '100%',
-								url: './app/video/CAM00244.mp4',
-								posterUrl: './app/video/CAM00244.jpg'
-							}
-						],
-						listeners: [
-							{
-								fn: function( event ) {
-									var overlayCmp = Ext.getCmp('page0_overlay');
-									overlayCmp.setCentered(false);
-									overlayCmp.hide();
-								},
-								event: 'pause',
-								delegate: '#myvideo'
-							}
-						]													
-					}
-				],
 				listeners: {
 					initialize: function(e) {
 						this.on('activate', function() {
-							//Overlay
-							var overlayCmp = Ext.getCmp('page0_overlay');
-							overlayCmp.setCentered(true);
-							overlayCmp.show();
+							//TitleBar 설정
+							Ext.getCmp('Toolbar_Pre').hide();
+							Ext.getCmp('Toolbar_Next').show();
 							
+							//Overlay 보여주기
+							var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
+							var videoCmp = Ext.getCmp('Root').query('video')[0];
+							
+							videoCmp.setUrl('./resources/video/CAM00244.mp4');
+							
+							overlayCmp.setCentered(true);
+							overlayCmp.show();			
 								
 							//버튼 초기화
 							if (document.getElementById('imgGreen')){
@@ -197,7 +184,26 @@
 						pressedCls:'cls-star2',
 						pressedDelay: 300,
 					}
-				]
+				],
+				
+				listeners: {
+					initialize: function(e) {
+						this.on('activate', function() {
+							//TitleBar 설정
+							Ext.getCmp('Toolbar_Pre').show();
+							Ext.getCmp('Toolbar_Next').show();
+							
+							//Overlay 보여주기
+							var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
+							var videoCmp = Ext.getCmp('Root').query('video')[0];
+							
+							videoCmp.setUrl('./resources/video/CAM00244.mp4');
+							
+							overlayCmp.setCentered(true);
+							overlayCmp.show();
+						});
+					}
+				}
 			},
 			
 			{
@@ -208,6 +214,23 @@
 				id: 'page3',
 				html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./resources/images/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
 				listeners: {
+					initialize: function(e) {
+						this.on('activate', function() {
+							//TitleBar 설정
+							Ext.getCmp('Toolbar_Pre').show();
+							Ext.getCmp('Toolbar_Next').show();
+							
+							//Overlay 보여주기
+							var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
+							var videoCmp = Ext.getCmp('Root').query('video')[0];
+							
+							videoCmp.setUrl('./resources/video/CAM00244.mp4');
+							
+							overlayCmp.setCentered(true);
+							overlayCmp.show();
+						});
+					},
+					
 					swipe :{
 						fn : function( event ) {
 							document.querySelector('.cls-pinwheel').className = 'cls-pinwheel-animation';
@@ -215,7 +238,7 @@
 						},
 						element : "element"
 						
-					}
+					}					
 				}
 			},
 			
@@ -228,7 +251,23 @@
 				html: '<center><div class="cls-pinch" style="width: 319px; height: 631px;"></div></center>',
 				
 				listeners: {
-					//tap :{
+					initialize: function(e) {
+						this.on('activate', function() {
+							//TitleBar 설정
+							Ext.getCmp('Toolbar_Pre').show();
+							Ext.getCmp('Toolbar_Next').show();
+							
+							//Overlay 보여주기
+							var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
+							var videoCmp = Ext.getCmp('Root').query('video')[0];
+							
+							videoCmp.setUrl('./resources/video/CAM00244.mp4');
+							
+							overlayCmp.setCentered(true);
+							overlayCmp.show();
+						});
+					},
+					
 					pinch :{
 						fn : function( event ) {	
 							var changedScale;
@@ -308,7 +347,26 @@
 
 						}                             
 					}
-				]
+				],
+				
+				listeners: {
+					initialize: function(e) {
+						this.on('activate', function() {
+							//TitleBar 설정
+							Ext.getCmp('Toolbar_Pre').show();
+							Ext.getCmp('Toolbar_Next').hide();
+							
+							//Overlay 보여주기
+							var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
+							var videoCmp = Ext.getCmp('Root').query('video')[0];
+							
+							videoCmp.setUrl('./resources/video/CAM00244.mp4');
+							
+							overlayCmp.setCentered(true);
+							overlayCmp.show();
+						});
+					},
+				}
 			}
 		],
 		
@@ -353,6 +411,11 @@
 				fn: 'onToolbar_HomeTap',
 				event: 'tap',
 				delegate: '#Toolbar_Home'
+			},
+			{
+				fn: 'onToolbar_RefreshTap',
+				event: 'tap',
+				delegate: '#Toolbar_Refresh'
 			}
 		]
 	},
@@ -411,14 +474,15 @@
 		var num_preView = num_currentView - 1;//현재뷰에서 한칸 뒤로
 		
 		//console.log( MaxCardSize );
+		
 		if( num_preView >= 1 ){//범위내일때만 동작
 			rootPanel.getLayout().setAnimation({type:'slide', direction:'right'});
 			rootPanel.setActiveItem( Ext.getCmp('page' + num_preView ) );			
 			titleBar.setTitle( table.items.items[num_preView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
 			
 			//console.dir( table.items.items[0].getTitle() );
-			
-			if( (num_preView == 1)){//맨끝일때
+			/*
+			if( num_preView == 1 ){//맨끝일때
 				Ext.getCmp('Toolbar_Pre').hide();
 				Ext.getCmp('Toolbar_Next').show();
 			}
@@ -426,7 +490,9 @@
 				Ext.getCmp('Toolbar_Pre').show();
 				Ext.getCmp('Toolbar_Next').show();
 			}
+			*/
 		}
+		
     },
 
     
@@ -437,19 +503,20 @@
 		var table = Ext.getCmp('page0');//RootPannel에 접근하는 목차에 접근합니다. text를 Title에 적어주기 위해서입니다.
 
 		var num_cardSize = rootPanel.innerItems.length;
-		alert( 'num_cardSize : ' + num_cardSize);
+		//alert( 'num_cardSize : ' + num_cardSize);
 		console.dir( rootPanel.innerItems );
 		
 		var num_currentView = eval(rootPanel._activeItem.id.slice(4,5));//현재뷰에서 한칸 앞으로
 		var num_nextView = num_currentView + 1;//현재뷰에서 한칸 앞으로
 		
-		alert("지금 : " + num_currentView + "다음 : " + num_nextView );
+		//alert("지금 : " + num_currentView + "다음 : " + num_nextView );
 		//console.log( MaxCardSize );
 		if( num_nextView < num_cardSize ){//범위내일때만 동작
 			rootPanel.getLayout().setAnimation({type:'slide', direction:'left'});
 			rootPanel.setActiveItem( Ext.getCmp('page' + num_nextView ) );			
 			titleBar.setTitle( table.items.items[num_nextView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
 			
+			/*
 			if( num_nextView == (num_cardSize-1) ){//맨끝일때
 				Ext.getCmp('Toolbar_Pre').show();
 				Ext.getCmp('Toolbar_Next').hide();
@@ -458,6 +525,7 @@
 				Ext.getCmp('Toolbar_Pre').show();
 				Ext.getCmp('Toolbar_Next').show();
 			}
+			*/
 		}
     },
 	
@@ -466,5 +534,14 @@
         console.log("Home");
 		Ext.getCmp('Root').getLayout().setAnimation({type:'pop'});
 		Ext.getCmp('Root').setActiveItem(0);
+    },
+	onToolbar_RefreshTap: function(button, e, options) {
+        console.log("refresh");
+		
+		//일단은 동영상만 다시 보여주기
+		//Overlay 보여주기
+		var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
+		//overlayCmp.setCentered(true);
+		overlayCmp.show();
     },
 });
