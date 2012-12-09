@@ -100,3 +100,13 @@
 	width: 35px !important;
 	height: 35px !important;
 }
+
+.cls-basicmenulist{
+	border-radius: 0;
+	background: transparent;
+	border-bottom-color: lightgray;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	cursor: context-menu;
+}
