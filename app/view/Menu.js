@@ -39,6 +39,7 @@
 	onButton_BasicTap: function(button, e, options) {
 		Ext.getCmp('Root').getLayout().setAnimation({type:'slide', direction:'left'});
 		Ext.getCmp('Root').setActiveItem(1);
+		Ext.getCmp('Step1_Basic').setActiveItem(0);		
 	}
 });
 
