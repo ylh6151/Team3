@@ -1,13 +1,38 @@
 ﻿@charset "utf-8";
-
 /* Chapter1 : Swip이벤트 관련 */
 .cls-pinwheel{
-	margin: 50px auto;
+	border: 0px;
+	background: transparent;
+	
+	background-image: url("../images/pinwheel_aquay.png") !important;
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 300px;
+	margin-top: -150px;
+	margin-left: -150px;
 }
 
 
 .cls-pinwheel-animation{
-	margin: 50px auto;
+	border: 0px;
+	background: transparent;
+	
+	background-image: url("../images/pinwheel_aquay.png") !important;
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 300px;
+	margin-top: -150px;
+	margin-left: -150px;
 	
 	-webkit-animation-name: myAnimation ;
 	-webkit-animation-duration: 3s;
