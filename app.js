@@ -14,7 +14,7 @@ Ext.application({
 
     launch: function() {
 
-        Ext.create('MyApp.view.Main', { fullscreen: true });
+        Ext.create('MyApp.view.Root', { fullscreen: true });
         completedOnDropDownViewLoad();
     }
 });
