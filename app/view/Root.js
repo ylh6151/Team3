@@ -43,8 +43,8 @@ Ext.define('MyApp.view.Root', {
 					//재생은 posterURL을 활용합시다.
 					{
 						fn: function( event ) {
-							Ext.getCmp('Root').query('#Overlay')[0].hide();//query는 '배열'을 반환합니다.
 							Ext.getCmp('Root').query('video')[0].stop();
+							Ext.getCmp('Root').query('#Overlay')[0].hide();//query는 '배열'을 반환합니다.							
 						},
 						event: 'ended',
 						delegate: 'video'//xtype으로 접근했습니다.

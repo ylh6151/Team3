@@ -131,29 +131,26 @@
 				xtype: 'panel',
 				id: 'page1',		
 				cls: 'cls-content',			
-				html: '<center><div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./resources/images/button_green.png" style="width:100%;"></div></center>',
-				listeners: {
+				html: '<div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./resources/images/button_green.png" style="width:100%;"></div>',
+				
+				listeners: {					
 					initialize: function(e) {
-						this.on('activate', function() {
+						this.on('activate', function() {						
 							//TitleBar 설정
 							Ext.getCmp('Toolbar_Pre').hide();
 							Ext.getCmp('Toolbar_Next').show();
 							
 							//Overlay 보여주기
-							var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
-							var videoCmp = Ext.getCmp('Root').query('video')[0];
-							
-							videoCmp.setUrl('./resources/video/CAM00244.mp4');
-							
-							overlayCmp.setCentered(true);
-							overlayCmp.show();			
+							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
+							//Ext.getCmp('Root').query('#Overlay')[0].show();
 								
 							//버튼 초기화
 							if (document.getElementById('imgGreen')){
 								document.getElementById('imgGreen').src = "./resources/images/button_green.png";
-							}
-						});
+							}						
+						});					
 					},
+					
 					tap :{
 						fn : function( event ) {
 							if( event.target.nodeName == 'IMG'){
@@ -163,7 +160,7 @@
 								else{
 									document.getElementById('imgGreen').src = "./resources/images/button_green.png";
 								}
-							}									
+							}
 						},
 						element : "element"
 					}
@@ -194,13 +191,8 @@
 							Ext.getCmp('Toolbar_Next').show();
 							
 							//Overlay 보여주기
-							var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
-							var videoCmp = Ext.getCmp('Root').query('video')[0];
-							
-							videoCmp.setUrl('./resources/video/CAM00244.mp4');
-							
-							overlayCmp.setCentered(true);
-							overlayCmp.show();
+							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
+							//Ext.getCmp('Root').query('#Overlay')[0].show();
 						});
 					}
 				}
@@ -212,7 +204,16 @@
 				cls: 'cls-content',
 				
 				id: 'page3',
-				html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./resources/images/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
+				//html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./resources/images/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
+				
+								
+				items:[
+					{
+						xtype: 'button',
+						cls: 'cls-pinwheel'
+					},
+				],
+				
 				listeners: {
 					initialize: function(e) {
 						this.on('activate', function() {
@@ -221,13 +222,8 @@
 							Ext.getCmp('Toolbar_Next').show();
 							
 							//Overlay 보여주기
-							var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
-							var videoCmp = Ext.getCmp('Root').query('video')[0];
-							
-							videoCmp.setUrl('./resources/video/CAM00244.mp4');
-							
-							overlayCmp.setCentered(true);
-							overlayCmp.show();
+							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
+							//Ext.getCmp('Root').query('#Overlay')[0].show();
 						});
 					},
 					
@@ -258,13 +254,8 @@
 							Ext.getCmp('Toolbar_Next').show();
 							
 							//Overlay 보여주기
-							var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
-							var videoCmp = Ext.getCmp('Root').query('video')[0];
-							
-							videoCmp.setUrl('./resources/video/CAM00244.mp4');
-							
-							overlayCmp.setCentered(true);
-							overlayCmp.show();
+							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
+							//Ext.getCmp('Root').query('#Overlay')[0].show();
 						});
 					},
 					
@@ -357,13 +348,8 @@
 							Ext.getCmp('Toolbar_Next').hide();
 							
 							//Overlay 보여주기
-							var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
-							var videoCmp = Ext.getCmp('Root').query('video')[0];
-							
-							videoCmp.setUrl('./resources/video/CAM00244.mp4');
-							
-							overlayCmp.setCentered(true);
-							overlayCmp.show();
+							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
+							//Ext.getCmp('Root').query('#Overlay')[0].show();
 						});
 					},
 				}
@@ -416,7 +402,7 @@
 				fn: 'onToolbar_RefreshTap',
 				event: 'tap',
 				delegate: '#Toolbar_Refresh'
-			}
+			},
 		]
 	},
 		
@@ -427,8 +413,7 @@
 		
 		Ext.getCmp('Step1_Basic').setActiveItem(index+1);
 		titleBar.setTitle( button.getText() );
-		
-		
+
 		
 		//console.log( index );
 		//console.log( titleBar );
@@ -504,7 +489,7 @@
 
 		var num_cardSize = rootPanel.innerItems.length;
 		//alert( 'num_cardSize : ' + num_cardSize);
-		console.dir( rootPanel.innerItems );
+		//console.dir( rootPanel.innerItems );
 		
 		var num_currentView = eval(rootPanel._activeItem.id.slice(4,5));//현재뷰에서 한칸 앞으로
 		var num_nextView = num_currentView + 1;//현재뷰에서 한칸 앞으로
@@ -537,11 +522,6 @@
     },
 	onToolbar_RefreshTap: function(button, e, options) {
         console.log("refresh");
-		
-		//일단은 동영상만 다시 보여주기
-		//Overlay 보여주기
-		var overlayCmp = Ext.getCmp('Root').query('#Overlay')[0];
-		//overlayCmp.setCentered(true);
-		overlayCmp.show();
+		Ext.getCmp('Root').query('#Overlay')[0].show();
     },
 });
