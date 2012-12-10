@@ -1,4 +1,4 @@
-Ext.define('MyApp.view.Root', {
+Ext.define('GuideApp.view.Root', {
     extend: 'Ext.Container',
     cls: 'cls-content',
     config: {
@@ -17,7 +17,10 @@ Ext.define('MyApp.view.Root', {
                 xtype: 'Step1_Basic',//기본동작 View입니다.
             },
             {
-                xtype: 'Step2_Phone',//기본동작 View입니다.
+                xtype: 'Step2_Call',//기본동작 View입니다.
+            },
+			{
+                xtype: 'Step3_Message',//기본동작 View입니다.
             },
 			//OverLay
 			{

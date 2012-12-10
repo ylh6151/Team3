@@ -1,4 +1,4 @@
-Ext.define('MyApp.controller.Main', {
+Ext.define('GuideApp.controller.Main', {
     extend: 'Ext.app.Controller',
     
     requires: [

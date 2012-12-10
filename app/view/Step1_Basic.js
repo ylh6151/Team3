@@ -1,4 +1,4 @@
-﻿Ext.define('MyApp.view.Step1_Basic', { 
+﻿Ext.define('GuideApp.view.Step1_Basic', { 
 	extend: 'Ext.Panel',
 	xtype: 'Step1_Basic',
 	id:  'Step1_Basic', 
@@ -7,15 +7,13 @@
 		cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
 		layout: {
 			type: 'card',
-			animation:'slide'
+			animation: 'slide'
 		},
 		
 		items: [			
 			// TitleBar
 			{
-				xtype: 'titlebar',
-				id: 'ContentView1-titlebar',
-				
+				xtype: 'titlebar',				
 				docked: 'top',
 				cls: 'cls-title',
 				
@@ -24,16 +22,16 @@
 				items: [
 					{
 						xtype: 'button',
-						id:'Toolbar_Pre',
+						itemId:'Toolbar_Pre',
 						cls:'cls-pretab',
-						width: '60px'
+						width: '60px',
 					},
 					{
 						xtype: 'button',
-						id:'Toolbar_Next',								
+						itemId:'Toolbar_Next',								
 						align: 'right',
 						cls:'cls-nexttab',
-						width: '60px'
+						width: '60px',						
 					}
 				]
 			},
@@ -56,14 +54,14 @@
 						xtype: 'button',
 						itemId: 'Toolbar_Home',
 						iconAlign: 'center',
-						iconCls: 'cls-home',
+						iconCls: 'cls-toolbar-homeButton',
 						//iconMask: true
 					},
 					{
 						xtype: 'button',
 						itemId: 'Toolbar_Refresh',
 						iconAlign: 'center',
-						iconCls: 'cls-refresh',
+						iconCls: 'cls-toolbar-refreshButton',
 						//iconMask: true
 					},
 					{
@@ -74,7 +72,7 @@
 			//Page0 : Menu
 			{
 				xtype: 'panel',
-				id: 'page0',		
+				itemId: 'page0',		
 				cls: 'cls-content',
 				
 				items: [
@@ -114,13 +112,12 @@
 						text: '드롭'
 					}
 				],
-				
 				listeners: {
 					initialize: function(e) {
 						this.on('activate', function() {
 							//TitleBar 설정
-							Ext.getCmp('Toolbar_Pre').hide();
-							Ext.getCmp('Toolbar_Next').hide();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].hide();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].hide();
 						});
 					}
 				}
@@ -129,20 +126,21 @@
 			//PageN : ContentView
 			{
 				xtype: 'panel',
-				id: 'page1',		
-				cls: 'cls-content',			
-				//html: '<div style = "width: 300px; height: 300px;"><img id="imgGreen" src="./resources/images/button_green.png" style="width:100%;"></div>',
+				itemId: 'page1',		
+				cls: 'cls-content',	
 				items:[
 					{
 						xtype: 'button',
-						cls: 'cls-greenbtn',
-						id:'greenbtn',
-							
+						cls: 'cls-greenbtn',							
 						listeners:{
+							initialize: function(e) {
+								this.on('activate', function() {	
+									this.setCls("cls-greenbtn");
+								});					
+							},
 							tap :{
 								fn : function( event ) {
-									Ext.getCmp('greenbtn').setCls("cls-redbtn");
-									
+									(this.getCls( ) == 'cls-greenbtn') ? this.setCls("cls-redbtn") : this.setCls("cls-greenbtn");
 								},
 								element:"element"
 							},
@@ -154,34 +152,14 @@
 					initialize: function(e) {
 						this.on('activate', function() {						
 							//TitleBar 설정
-							Ext.getCmp('Toolbar_Pre').hide();
-							Ext.getCmp('Toolbar_Next').show();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].hide();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
 							
 							//Overlay 보여주기
 							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
 							//Ext.getCmp('Root').query('#Overlay')[0].show();
-								
-							//버튼 초기화
-							/*if (document.getElementById('imgGreen')){
-								document.getElementById('imgGreen').src = "./resources/images/button_green.png";
-							}*/	
-							Ext.getCmp('greenbtn').setCls("cls-greenbtn");
 						});					
 					},
-					
-					/*tap :{
-						fn : function( event ) {
-							if( event.target.nodeName == 'IMG'){
-								if( (document.getElementById('imgGreen').src).lastIndexOf("red.png") < 0){
-									document.getElementById('imgGreen').src = "./resources/images/button_red.png";
-								}
-								else{
-									document.getElementById('imgGreen').src = "./resources/images/button_green.png";
-								}
-							}
-						},
-						element : "element"
-					}*/
 				}
 			},
 			{
@@ -189,7 +167,7 @@
 				xtype: 'panel',
 				cls: 'cls-content',
 				
-				id: 'page2',
+				itemId: 'page2',
 				items: [
 					{
 						xtype:'button',
@@ -203,7 +181,6 @@
 									Ext.getCmp('tapholdbtn').setCls("cls-starhold");
 									console.dir("touchstart");
 									console.dir(event);
-									
 								},
 								element:"element"
 							},
@@ -212,7 +189,6 @@
 									Ext.getCmp('tapholdbtn').setCls("cls-star2");
 									console.dir("taphold");
 									console.dir(event);
-									
 								},
 								element:"element"
 							},
@@ -221,7 +197,6 @@
 									Ext.getCmp('tapholdbtn').setCls("cls-star");
 									console.dir("touchend");
 									console.dir(event);
-									
 								},
 								element:"element"
 							}
@@ -233,9 +208,8 @@
 					initialize: function(e) {
 						this.on('activate', function() {
 							//TitleBar 설정
-							Ext.getCmp('Toolbar_Pre').show();
-							Ext.getCmp('Toolbar_Next').show();
-							
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();							
 							//Overlay 보여주기
 							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
 							//Ext.getCmp('Root').query('#Overlay')[0].show();
@@ -249,7 +223,7 @@
 				xtype: 'panel',
 				cls: 'cls-content',
 				
-				id: 'page3',
+				itemId: 'page3',
 				//html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./resources/images/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
 				
 								
@@ -264,8 +238,8 @@
 					initialize: function(e) {
 						this.on('activate', function() {
 							//TitleBar 설정
-							Ext.getCmp('Toolbar_Pre').show();
-							Ext.getCmp('Toolbar_Next').show();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
 							
 							//Overlay 보여주기
 							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
@@ -289,15 +263,15 @@
 				xtype: 'panel',
 				cls: 'cls-content',
 				
-				id: 'page4',
+				itemId: 'page4',
 				html: '<center><div class="cls-pinch" style="width: 319px; height: 631px;"></div></center>',
 				
 				listeners: {
 					initialize: function(e) {
 						this.on('activate', function() {
 							//TitleBar 설정
-							Ext.getCmp('Toolbar_Pre').show();
-							Ext.getCmp('Toolbar_Next').show();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
 							
 							//Overlay 보여주기
 							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
@@ -352,7 +326,7 @@
 				xtype: 'panel',
 				cls: 'cls-content',
 				
-				id: 'page5',
+				itemId: 'page5',
 				items: [
 					{
 						xtype: 'panel',
@@ -390,8 +364,8 @@
 					initialize: function(e) {
 						this.on('activate', function() {
 							//TitleBar 설정
-							Ext.getCmp('Toolbar_Pre').show();
-							Ext.getCmp('Toolbar_Next').hide();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].hide();		
 							
 							//Overlay 보여주기
 							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
@@ -455,10 +429,8 @@
 	/**************Function for Listeners**************/
 	onButton_Chapter1Tap: function(button, e, options) {
 		var index = parseInt(button.initialConfig.num);//0~n-1까지 입니다.
-		var titleBar = Ext.getCmp('ContentView1-titlebar');//RootPanel의 TitleBar
-		
 		Ext.getCmp('Step1_Basic').setActiveItem(index+1);
-		titleBar.setTitle( button.getText() );
+		Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( button.getText() );
 
 		
 		//console.log( index );
@@ -508,8 +480,9 @@
 		
 		if( num_preView >= 1 ){//범위내일때만 동작
 			rootPanel.getLayout().setAnimation({type:'slide', direction:'right'});
-			rootPanel.setActiveItem( Ext.getCmp('page' + num_preView ) );			
-			titleBar.setTitle( table.items.items[num_preView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
+			rootPanel.setActiveItem( Ext.getCmp('Root').query('#page' + num_preView)[0] );
+			
+			Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( Ext.getCmp('Root').query('#page0')[0].items.items[num_preView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
 			
 			//console.dir( table.items.items[0].getTitle() );
 			/*
@@ -530,22 +503,16 @@
 	onTitle_NextTap: function(button, e, options) {		
         //1. 이동
 		var rootPanel = Ext.getCmp('Step1_Basic');//card속성을 가진 RootPanel
-		var titleBar = Ext.getCmp('ContentView1-titlebar');//RootPanel의 TitleBar
-		var table = Ext.getCmp('page0');//RootPannel에 접근하는 목차에 접근합니다. text를 Title에 적어주기 위해서입니다.
-
 		var num_cardSize = rootPanel.innerItems.length;
-		//alert( 'num_cardSize : ' + num_cardSize);
-		//console.dir( rootPanel.innerItems );
-		
-		var num_currentView = eval(rootPanel._activeItem.id.slice(4,5));//현재뷰에서 한칸 앞으로
+		var num_currentView = eval(rootPanel._activeItem._itemId.slice(4,5));//현재뷰에서 한칸 앞으로
 		var num_nextView = num_currentView + 1;//현재뷰에서 한칸 앞으로
-		
-		//alert("지금 : " + num_currentView + "다음 : " + num_nextView );
-		//console.log( MaxCardSize );
+
 		if( num_nextView < num_cardSize ){//범위내일때만 동작
 			rootPanel.getLayout().setAnimation({type:'slide', direction:'left'});
-			rootPanel.setActiveItem( Ext.getCmp('page' + num_nextView ) );			
-			titleBar.setTitle( table.items.items[num_nextView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
+			rootPanel.setActiveItem( Ext.getCmp('Root').query('#page' + num_nextView)[0] );
+
+			Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( Ext.getCmp('Root').query('#page0')[0].items.items[num_nextView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
+
 			
 			/*
 			if( num_nextView == (num_cardSize-1) ){//맨끝일때

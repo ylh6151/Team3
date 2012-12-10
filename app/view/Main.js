@@ -1,4 +1,4 @@
-Ext.define('MyApp.view.Main', {
+Ext.define('GuideApp.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
     
