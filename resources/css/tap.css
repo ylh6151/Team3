@@ -1,11 +1,9 @@
 .cls-greenbtn{
 	border: 0px;
-	background: transparent;
-	
 	background-image: url("../images/button_green.png") !important;
 	background-size: 100% 100% !important;
 	background-repeat: no-repeat !important;
-	
+	background-color: transparent !important;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -17,12 +15,10 @@
 
 .cls-redbtn{
 	border: 0px;
-	background: transparent;
-	
 	background-image: url("../images/button_red.png") !important;
 	background-size: 100% 100% !important;
 	background-repeat: no-repeat !important;
-	
+	background-color: transparent !important;
 	position: absolute;
 	top: 50%;
 	left: 50%;

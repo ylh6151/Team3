@@ -2,12 +2,10 @@
 /* Chapter1 : Swip이벤트 관련 */
 .cls-pinwheel{
 	border: 0px;
-	background: transparent;
-	
 	background-image: url("../images/pinwheel_aquay.png") !important;
 	background-size: 100% 100% !important;
 	background-repeat: no-repeat !important;
-	
+	background-color: transparent !important;
 	position: absolute;
 	top: 50%;
 	left: 50%;

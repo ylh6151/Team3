@@ -80,14 +80,14 @@ Ext.define('GuideApp.view.Step3_Message', {
 					{
 						xtype: 'button',
 						itemId: 'button_tap',
-						cls:'cls-basicmenulist',
+						cls:'cls-submenulist',
 						num : '0',
 						text: '문자쓰기'
 					},
 					{
 						xtype: 'button',
 						itemId: 'button_taphold',
-						cls:'cls-basicmenulist',
+						cls:'cls-submenulist',
 						num : '1',
 						text: '문자받기'
 					}

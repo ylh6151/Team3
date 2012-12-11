@@ -80,14 +80,14 @@ Ext.define('GuideApp.view.Step2_Call', {
 					{
 						xtype: 'button',
 						itemId: 'button_menu_call',
-						cls:'cls-basicmenulist',
+						cls:'cls-submenulist',
 						num : '0',
 						text: '전화걸기'
 					},
 					{
 						xtype: 'button',
 						itemId: 'button_menu_pickUp',
-						cls:'cls-basicmenulist',
+						cls:'cls-submenulist',
 						num : '1',
 						text: '전화받기'
 					}

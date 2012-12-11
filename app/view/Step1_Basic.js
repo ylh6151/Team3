@@ -74,44 +74,44 @@
 			{
 				xtype: 'panel',
 				itemId: 'page0',		
-				cls: 'cls-content',
+				cls: 'cls-basicmenu',
 				
 				items: [
 					{
 						xtype: 'button',
 						itemId: 'button_tap',
-						cls:'cls-basicmenulist',
+						cls:'cls-basicmenu-tapbutton',
 						num : '0',
-						text: '탭'
+						//text: '탭'
 					},
 					{
 						xtype: 'button',
 						itemId: 'button_taphold',
-						cls:'cls-basicmenulist',
+						cls:'cls-basicmenu-tapholdbutton',
 						num : '1',
-						text: '탭홀드'
-					},
-					{
-						xtype: 'button',
-						itemId: 'button_swip',
-						cls:'cls-basicmenulist',
-						num : '2',
-						text: '스와이프'
+						//text: '탭홀드'
 					},
 					{
 						xtype: 'button',
 						itemId: 'button_pinch',
-						cls:'cls-basicmenulist',
+						cls:'cls-basicmenu-pinchbutton',
 						num : '3',
-						text: '핀치'
+						//text: '핀치'
 					},
 					{
 						xtype: 'button',
 						itemId: 'button_drop',
-						cls:'cls-basicmenulist',
+						cls:'cls-basicmenu-dropbutton',
 						num : '4',
-						text: '드롭'
-					}
+						//text: '드롭'
+					},
+					{
+						xtype: 'button',
+						itemId: 'button_swip',
+						cls:'cls-basicmenu-swipbutton',
+						num : '2',
+						//text: '스와이프'
+					},
 				],
 				listeners: {
 					initialize: function(e) {
