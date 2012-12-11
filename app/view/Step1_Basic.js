@@ -272,89 +272,14 @@
 						cls: 'cls-pinch',
 
 					}
-				],						/*,
-									
-						listeners: {
-							initialize: function(e) {
-								this.on('activate', function() {
-									alert("존나 이상");
-									//console.dir( document.querySelector( '.cls-pinch' ) );
-									
-									
-									/*
-									//적당한 사이즈로 조절 : 300 x 600
-									var maxWidth = document.body.clientWidth;
-									var maxHeight = document.body.clientHeight;
-									
-									if( maxWidth*2 < maxHeight ) {
-										document.querySelector( '#eyesightButton' ).style.height = maxWidth*2 + "px";
-										document.querySelector( '#eyesightButton' ).style.width = maxWidth + "px";
-									}
-									else{
-										document.querySelector( '#eyesightButton' ).style.height = maxHeight + "px";
-										document.querySelector( '#eyesightButton' ).style.width = maxHeight/2 + "px";
-									}
-								});
-							}
-						}
-							tap :{
-								fn : function( event ) {
-									console.dir( document.querySelector( '#eyesightButton' ).style.height );
-								},
-								element:"element"
-							}
-							
-							//pinch :{
-								fn : function( event ) {	
-									var changedScale;
-									var maxWidth = document.body.clientWidth;
-									var maxHeight = document.body.clientHeight;
-									//alert( maxWidth );
-									console.dir( document.querySelector( '.cls-pinch' ) );
-									
-									/*
-									if( event.scale > 1){//확대
-										if( event.scale > 1.005 ){
-											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 1.05;
-											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * 1.05;
-										}
-										else{
-											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
-											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * event.scale;
-										}
-										
-										document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
-										document.querySelector( '.cls-pinch' ).style.height = changedScaleHeight + "px";
-									}
-									else{//축소
-										if( event.scale < 0.95 ){
-											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 0.95;
-											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * 0.95;
-										}
-										else{
-											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
-											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * event.scale;
-										}
-										
-										if( changedScaleWidth > 100){//클때만 이벤트 적용
-											document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
-											document.querySelector( '.cls-pinch' ).style.height = changedScaleHeight + "px";
-										}
-									}
-								},
-								element : "element"								
-							}
-						
-						}
-							*/
-				
-				
+				],				
 				listeners: {
 					initialize: function(e) {
 						this.on('activate', function() {	
 							//TitleBar 설정
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
+							
 							
 							//버튼 사이즈 및 위치 초기화
 							document.querySelector( '.cls-pinch' ).style.height = "300px";
@@ -363,8 +288,6 @@
 							document.querySelector( '.cls-pinch' ).style.width = "150px";							
 							document.querySelector( '.cls-pinch' ).style.marginLeft = "-75px";
 
-						
-							
 							
 							//Overlay 보여주기
 							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
@@ -416,98 +339,6 @@
 						element : "element"								
 					}
 				}
-				/*
-				itemId: 'page3',
-				
-				items:[
-					{
-						xtype: 'button',
-						cls: 'cls-pinwheel'
-					},
-				],
-				
-				listeners: {
-					initialize: function(e) {
-						this.on('activate', function() {
-							//TitleBar 설정
-							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
-							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
-							
-							//Overlay 보여주기
-							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
-							//Ext.getCmp('Root').query('#Overlay')[0].show();
-						});
-					},
-					
-					swipe :{
-						fn : function( event ) {
-							document.querySelector('.cls-pinwheel').className = 'cls-pinwheel-animation';
-							setTimeout( "document.querySelector('.cls-pinwheel-animation').className = 'cls-pinwheel';" , 3000);
-						},
-						element : "element"
-						
-					}					
-				}
-				
-				
-				
-				
-				html: '<center><div class="cls-pinch" style="width: 319px; height: 631px;"></div></center>',
-				
-				listeners: {
-					initialize: function(e) {
-						this.on('activate', function() {
-							//TitleBar 설정
-							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
-							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
-							
-							//Overlay 보여주기
-							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
-							//Ext.getCmp('Root').query('#Overlay')[0].show();
-						});
-					},
-					
-					pinch :{
-						fn : function( event ) {	
-							var changedScale;
-							var maxWidth = document.body.clientWidth;
-							var maxHeight = document.body.clientHeight;
-							//alert( maxWidth );
-							
-							
-							if( event.scale > 1){//확대
-								if( event.scale > 1.005 ){
-									changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 1.05;
-									changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * 1.05;
-								}
-								else{
-									changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
-									changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * event.scale;
-								}
-								
-								document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
-								document.querySelector( '.cls-pinch' ).style.height = changedScaleHeight + "px";
-							}
-							else{//축소
-								if( event.scale < 0.95 ){
-									changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 0.95;
-									changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * 0.95;
-								}
-								else{
-									changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
-									changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * event.scale;
-								}
-								
-								if( changedScaleWidth > 100){//클때만 이벤트 적용
-									document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
-									document.querySelector( '.cls-pinch' ).style.height = changedScaleHeight + "px";
-								}
-							}
-						},
-						element : "element"								
-					}
-				}
-				*/
 			},
 			
 			{
@@ -620,38 +451,6 @@
 		var index = parseInt(button.initialConfig.num);//0~n-1까지 입니다.
 		Ext.getCmp('Step1_Basic').setActiveItem(index+1);
 		Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( button.getText() );
-
-		
-		//console.log( index );
-		//console.log( titleBar );
-		/*
-		var index = parseInt(button.initialConfig.num);
-		var titleBar = Ext.getCmp('ContentView1-titlebar');//RootPanel의 TitleBar
-        
-		Ext.getCmp('Toolbar_Pre').setDisabled(false);
-		Ext.getCmp('Toolbar_Next').setDisabled(false);
-		if (index == '0')
-        {
-			Ext.getCmp('Toolbar_Pre').hide();
-			Ext.getCmp('Toolbar_Next').show();
-        }
-		else if (index == '4')
-		{
-			Ext.getCmp('Toolbar_Pre').show();
-			Ext.getCmp('Toolbar_Next').hide();
-		}
-		else{
-			Ext.getCmp('Toolbar_Pre').show();
-			Ext.getCmp('Toolbar_Next').show();
-		}
-
-		Ext.getCmp('Root').setActiveItem(2);
-        Ext.getCmp('Step1_Basic').setActiveItem(index);
-		titleBar.setTitle( button.getText() );
-		*/
-		
-		//각 View의 page0은 Menu로 사용. 1~N까지 각 페이지
-		
     },
 
 	//Title Bar
@@ -672,18 +471,6 @@
 			rootPanel.setActiveItem( Ext.getCmp('Root').query('#page' + num_preView)[0] );
 			
 			Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( Ext.getCmp('Root').query('#page0')[0].items.items[num_preView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
-			
-			//console.dir( table.items.items[0].getTitle() );
-			/*
-			if( num_preView == 1 ){//맨끝일때
-				Ext.getCmp('Toolbar_Pre').hide();
-				Ext.getCmp('Toolbar_Next').show();
-			}
-			else{
-				Ext.getCmp('Toolbar_Pre').show();
-				Ext.getCmp('Toolbar_Next').show();
-			}
-			*/
 		}
 		
     },
@@ -701,18 +488,6 @@
 			rootPanel.setActiveItem( Ext.getCmp('Root').query('#page' + num_nextView)[0] );
 
 			Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( Ext.getCmp('Root').query('#page0')[0].items.items[num_nextView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
-
-			
-			/*
-			if( num_nextView == (num_cardSize-1) ){//맨끝일때
-				Ext.getCmp('Toolbar_Pre').show();
-				Ext.getCmp('Toolbar_Next').hide();
-			}
-			else{
-				Ext.getCmp('Toolbar_Pre').show();
-				Ext.getCmp('Toolbar_Next').show();
-			}
-			*/
 		}
     },
 	
