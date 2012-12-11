@@ -3,7 +3,7 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
-	controllers: ['Main'],
+	controllers: ['DragDrop'],
     views: [
         'Root',//Card레이아웃을 위한 Root Panel		
 		'Menu',//메인메뉴
@@ -11,7 +11,8 @@ Ext.application({
 		'Step2_Call',//두번째 콘텐츠 그룹
 		'Step3_Message',//세번째 콘텐츠 그룹
 		
-		'Main'//드래그앤드랍
+	
+		'DragDrop'//드래그앤드랍
 		
     ],
     name: 'GuideApp',

@@ -343,56 +343,8 @@
 			
 			{
 				title: '드래그',
-				xtype: 'panel',
-				cls: 'cls-content',
-				
-				itemId: 'page5',
-				items: [
-					{
-						xtype: 'panel',
-						itemId : 'panelHtml',
-						html: "<div id='dragpanel' style='background?color:#00ff00'>드래그<br/>하셔요</div>",
-						draggable:true,
-						left:0,
-						right:0,
-						top:0,
-						bottom:0,
-						width:70,
-						height:55,
-						listeners:{
-							dragstart:{
-								fn:function(event){
-								},
-								element:"element"
-							},
-							drag:{
-								fn:function(event){
-								},
-								element:"element"
-							},
-							dragend:{
-								fn:function(event){
-								},
-								element:"element"
-							}
-
-						}                             
-					}
-				],
-				
-				listeners: {
-					initialize: function(e) {
-						this.on('activate', function() {
-							//TitleBar 설정
-							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
-							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].hide();		
-							
-							//Overlay 보여주기
-							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
-							//Ext.getCmp('Root').query('#Overlay')[0].show();
-						});
-					},
-				}
+				xtype: 'dragDrop',
+				itemId: 'page5'
 			}
 		],
 		
