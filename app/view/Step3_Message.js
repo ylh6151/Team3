@@ -14,6 +14,7 @@ Ext.define('GuideApp.view.Step3_Message', {
 			{
 				xtype: 'titlebar',				
 				docked: 'top',
+				height : '3.6em',
 				cls: 'cls-title',
 				
 				title: '문자쓰기&받기',
@@ -93,7 +94,10 @@ Ext.define('GuideApp.view.Step3_Message', {
 				],				
 				listeners: {					
 					initialize: function(e) {
-						this.on('activate', function() {						
+						this.on('activate', function() {	
+							//Title 설정
+							Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( '문자쓰기&받기' );
+							
 							//TitleBar 설정
 							Ext.getCmp('Step3_Message').query('#Toolbar_Pre')[0].hide();
 							Ext.getCmp('Step3_Message').query('#Toolbar_Next')[0].hide();		

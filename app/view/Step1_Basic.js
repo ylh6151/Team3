@@ -15,6 +15,7 @@
 			{
 				xtype: 'titlebar',				
 				docked: 'top',
+				height : '3.6em',
 				cls: 'cls-title',
 				
 				title: '기본동작',
@@ -115,6 +116,8 @@
 				listeners: {
 					initialize: function(e) {
 						this.on('activate', function() {
+							//Title 설정
+							Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( '기본동작' );
 							//TitleBar 설정
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].hide();
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].hide();
@@ -224,9 +227,7 @@
 				cls: 'cls-content',
 				
 				itemId: 'page3',
-				//html: '<div class="cls-pinwheel" style = "width: 300px; height: 300px;"><img src="./resources/images/pinwheel_aquay.png" width: "300px" height: "300px"></div>',
 				
-								
 				items:[
 					{
 						xtype: 'button',
@@ -264,6 +265,193 @@
 				cls: 'cls-content',
 				
 				itemId: 'page4',
+				
+				items:[
+					{
+						xtype: 'button',
+						cls: 'cls-pinch',
+
+					}
+				],						/*,
+									
+						listeners: {
+							initialize: function(e) {
+								this.on('activate', function() {
+									alert("존나 이상");
+									//console.dir( document.querySelector( '.cls-pinch' ) );
+									
+									
+									/*
+									//적당한 사이즈로 조절 : 300 x 600
+									var maxWidth = document.body.clientWidth;
+									var maxHeight = document.body.clientHeight;
+									
+									if( maxWidth*2 < maxHeight ) {
+										document.querySelector( '#eyesightButton' ).style.height = maxWidth*2 + "px";
+										document.querySelector( '#eyesightButton' ).style.width = maxWidth + "px";
+									}
+									else{
+										document.querySelector( '#eyesightButton' ).style.height = maxHeight + "px";
+										document.querySelector( '#eyesightButton' ).style.width = maxHeight/2 + "px";
+									}
+								});
+							}
+						}
+							tap :{
+								fn : function( event ) {
+									console.dir( document.querySelector( '#eyesightButton' ).style.height );
+								},
+								element:"element"
+							}
+							
+							//pinch :{
+								fn : function( event ) {	
+									var changedScale;
+									var maxWidth = document.body.clientWidth;
+									var maxHeight = document.body.clientHeight;
+									//alert( maxWidth );
+									console.dir( document.querySelector( '.cls-pinch' ) );
+									
+									/*
+									if( event.scale > 1){//확대
+										if( event.scale > 1.005 ){
+											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 1.05;
+											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * 1.05;
+										}
+										else{
+											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * event.scale;
+										}
+										
+										document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
+										document.querySelector( '.cls-pinch' ).style.height = changedScaleHeight + "px";
+									}
+									else{//축소
+										if( event.scale < 0.95 ){
+											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 0.95;
+											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * 0.95;
+										}
+										else{
+											changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+											changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * event.scale;
+										}
+										
+										if( changedScaleWidth > 100){//클때만 이벤트 적용
+											document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
+											document.querySelector( '.cls-pinch' ).style.height = changedScaleHeight + "px";
+										}
+									}
+								},
+								element : "element"								
+							}
+						
+						}
+							*/
+				
+				
+				listeners: {
+					initialize: function(e) {
+						this.on('activate', function() {	
+							//TitleBar 설정
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
+							
+							//버튼 사이즈 및 위치 초기화
+							document.querySelector( '.cls-pinch' ).style.height = "300px";
+							document.querySelector( '.cls-pinch' ).style.marginTop  = "-150px";
+							
+							document.querySelector( '.cls-pinch' ).style.width = "150px";							
+							document.querySelector( '.cls-pinch' ).style.marginLeft = "-75px";
+
+						
+							
+							
+							//Overlay 보여주기
+							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
+							//Ext.getCmp('Root').query('#Overlay')[0].show();
+						});
+					},
+					
+					pinch :{
+						fn : function( event ) {
+							var changedScale;
+							var maxWidth = document.querySelector( '.cls-pinch' ).parentElement.parentElement.clientWidth;
+							var maxHeight = document.querySelector( '.cls-pinch' ).parentElement.parentElement.clientHeight;
+							
+							if( event.scale > 1){//확대
+								if( event.scale > 1.005 ){
+									changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 1.05;
+									changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * 1.05;
+								}
+								else{
+									changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+									changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * event.scale;
+								}
+								
+								//변경된 스케일 적용
+								document.querySelector( '.cls-pinch' ).style.height = changedScaleHeight + "px";
+								document.querySelector( '.cls-pinch' ).style.marginTop  = eval( -(changedScaleHeight / 2 ) ) + "px";
+								document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
+								document.querySelector( '.cls-pinch' ).style.marginLeft  = eval( -(changedScaleWidth / 2 ) ) + "px";
+							}
+							else{//축소
+								if( event.scale < 0.95 ){
+									changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * 0.95;
+									changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * 0.95;
+								}
+								else{
+									changedScaleHeight =  document.querySelector( '.cls-pinch' ).style.height.replace( "px", ""  ) * event.scale;
+									changedScaleWidth =  document.querySelector( '.cls-pinch' ).style.width.replace( "px", ""  ) * event.scale;
+								}
+								
+								if( changedScaleWidth > 100){//클때만 이벤트 적용
+									//변경된 스케일 적용
+									document.querySelector( '.cls-pinch' ).style.height = changedScaleHeight + "px";
+									document.querySelector( '.cls-pinch' ).style.marginTop  = eval( -(changedScaleHeight / 2 ) ) + "px";
+									document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
+									document.querySelector( '.cls-pinch' ).style.marginLeft  = eval( -(changedScaleWidth / 2 ) ) + "px";
+								}
+							}				
+						},
+						element : "element"								
+					}
+				}
+				/*
+				itemId: 'page3',
+				
+				items:[
+					{
+						xtype: 'button',
+						cls: 'cls-pinwheel'
+					},
+				],
+				
+				listeners: {
+					initialize: function(e) {
+						this.on('activate', function() {
+							//TitleBar 설정
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
+							
+							//Overlay 보여주기
+							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
+							//Ext.getCmp('Root').query('#Overlay')[0].show();
+						});
+					},
+					
+					swipe :{
+						fn : function( event ) {
+							document.querySelector('.cls-pinwheel').className = 'cls-pinwheel-animation';
+							setTimeout( "document.querySelector('.cls-pinwheel-animation').className = 'cls-pinwheel';" , 3000);
+						},
+						element : "element"
+						
+					}					
+				}
+				
+				
+				
+				
 				html: '<center><div class="cls-pinch" style="width: 319px; height: 631px;"></div></center>',
 				
 				listeners: {
@@ -319,6 +507,7 @@
 						element : "element"								
 					}
 				}
+				*/
 			},
 			
 			{

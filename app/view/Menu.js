@@ -8,6 +8,22 @@
 		
 		/**************Items**************/
 		items: [
+			//화면비율을 위한 Titlebar와 Toolbar
+			// TitleBar
+			{
+				xtype: 'titlebar',				
+				docked: 'top',
+				height : '3.6em',
+				cls: 'cls-title',
+				
+				title: '길라잡이',
+			},
+			//ToolBar
+			{
+				xtype: 'toolbar',
+				docked: 'bottom',
+				cls: 'cls-toolbar',
+			},
 			{
 				xtype: 'button',
 				itemId: 'button_basic',

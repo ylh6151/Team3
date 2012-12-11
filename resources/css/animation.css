@@ -48,9 +48,14 @@
 
 /* Chapter1 : Pinch 관련 */
 .cls-pinch{
-	margin: 10px auto;
-
-	background-size: 100% 100%;
-	background-image: url("../images/eyesight.gif");
-	background-repeat: no-repeat;
+	border: 0px;
+	background: transparent;
+	
+	background-image: url("../images/eyesight.gif") !important;
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
 }
