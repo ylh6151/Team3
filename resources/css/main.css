@@ -24,7 +24,7 @@
 	height: 3.5em !important;
 }
 	.cls-toolbar-homeButton{
-		background-image: url("../images/second/home.png");
+		background-image: url("../images/home.png");
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 		width: 38px !important;
@@ -32,7 +32,7 @@
 	}
 
 	.cls-toolbar-refreshButton{
-		background-image: url("../images/second/re.png");
+		background-image: url("../images/re.png");
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 		width: 35px !important;
@@ -41,12 +41,12 @@
 
 /*Start : 메인메뉴 */
 .cls-menu{
-	background-image: url("../images/body_menu.jpg");
+	background-image: url("../images/RootMenu/body_menu.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
 	.cls-menu-basicButton{
-		background-image: url("../images/second/basic.png") !important;
+		background-image: url("../images/RootMenu/basic.png") !important;
 		background-size: 100% 100% !important;
 		background-repeat: no-repeat !important;
 		width: 70%;
@@ -59,7 +59,7 @@
 	}
 
 	.cls-menu-callButton{
-		background-image: url("../images/second/phone.png") !important;
+		background-image: url("../images/RootMenu/phone.png") !important;
 		background-size: 100% 100% !important;
 		background-repeat: no-repeat !important;
 		width: 31%;
@@ -72,7 +72,7 @@
 	}
 
 	.cls-menu-messageButton{
-		background-image: url("../images/second/dial.png") !important;
+		background-image: url("../images/RootMenu/dial.png") !important;
 		background-size: 100% 100% !important;
 		background-repeat: no-repeat !important;
 		width: 31%;
@@ -89,7 +89,7 @@
 
 
 .cls-pretab{
-	background-image: url('../images/second/back.png') !important;
+	background-image: url('../images/back.png') !important;
 	background-size: 100% 100% !important;
 	border:0px !important;
 	background-color: transparent !important;
@@ -98,7 +98,7 @@
 }
 
 .cls-nexttab{
-	background-image: url('../images/second/next.png') !important;
+	background-image: url('../images/next.png') !important;
 	background-size: 100% 100% !important;
 	border:0px !important;
 	background-color: transparent !important;

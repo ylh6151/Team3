@@ -79,14 +79,14 @@ Ext.define('GuideApp.view.Step2_Call', {
 				items: [
 					{
 						xtype: 'button',
-						itemId: 'button_tap',
+						itemId: 'button_menu_call',
 						cls:'cls-basicmenulist',
 						num : '0',
 						text: '전화걸기'
 					},
 					{
 						xtype: 'button',
-						itemId: 'button_taphold',
+						itemId: 'button_menu_pickUp',
 						cls:'cls-basicmenulist',
 						num : '1',
 						text: '전화받기'
@@ -108,11 +108,81 @@ Ext.define('GuideApp.view.Step2_Call', {
 						});					
 					},
 				}
+			},
+			//PageN : ContentView			
+			//Page1 : 전화걸기
+			{
+				xtype : 'container',
+				itemId: 'page1',
+				layout: {
+					type: 'card',
+					//animation:'slide'
+				},
+				items: [
+					{
+						xtype: 'panel',
+						itemId: 'page1-1',
+						style: {
+							'background-image': 'url("../resources/images/phoneRoot.jpg")',
+							'background-size': '100% 100%',
+							'background-repeat': 'no-repeat'
+						},
+						items:[
+							{
+								xtype: 'button',
+								cls: 'cls-Step2_Call-Page1Button',
+								pressedCls : 'cls-Step2_Call-Page1Button_pressed',
+								listeners:{
+									tap :{
+										fn : function( event ) {
+											alert("잘하셨습니다.");
+											Ext.getCmp('Step2_Call').query('#page1')[0].setActiveItem(1);
+											//Ext.getCmp('Step2_Call').query('page1')[0].setTitle( button.getText() );
+										},
+										element:"element"
+									}
+								}
+							},
+						]
+					},
+					{//Page1 : 전화걸기
+						xtype: 'panel',
+						itemId: 'page1-2',
+						style: {
+							'background-image': 'url("../resources/images/Step2_Call/call_1-1.jpg")',
+							'background-size': '100% 100%',
+							'background-repeat': 'no-repeat'
+						}
+						/*,
+						items:[
+							{
+								xtype: 'button',
+								cls: 'cls-Step2_Call-Page1Button',
+								pressedCls : 'cls-Step2_Call-Page1Button_pressed',
+								listeners:{
+									tap :{
+										fn : function( event ) {
+											alert("잘하셨습니다.");
+										},
+										element:"element"
+									}
+								}
+							},
+						]
+						*/
+					}
+				]
 			}
+			
 		],
 		
 		/**************Listeners**************/
-		listeners: [		
+		listeners: [
+			{
+				fn: 'onButton_Chapter2_Tap',
+				event: 'tap',
+				delegate: '#button_menu_call'
+			},
 			{
 				fn: 'onToolbar_HomeTap',
 				event: 'tap',
@@ -127,6 +197,13 @@ Ext.define('GuideApp.view.Step2_Call', {
 	},
 	
 	/**************Function for Listeners**************/
+	//Menu
+	onButton_Chapter2_Tap: function(button, e, options) {
+		var index = parseInt(button.initialConfig.num);//0~n-1까지 입니다.
+		Ext.getCmp('Step2_Call').setActiveItem(index+1);
+		Ext.getCmp('Step2_Call').query('titlebar')[0].setTitle( button.getText() );
+    },
+	
 	//Tool Bar
 	onToolbar_HomeTap: function(button, e, options) {
         console.log("Home");

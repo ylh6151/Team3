@@ -1,0 +1,15 @@
+﻿.cls-Step2_Call-Page1Button{
+	background: transparent;
+	border-width: 4px;
+	border-color: red;
+	
+	width: 16.7%;
+	height: 13%;
+	top: 84%;
+	left: 6%;
+	position: absolute;
+}
+
+	.cls-Step2_Call-Page1Button_pressed{
+		border-color: green;
+	}
