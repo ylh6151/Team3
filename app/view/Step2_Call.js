@@ -96,7 +96,7 @@ Ext.define('GuideApp.view.Step2_Call', {
 					initialize: function(e) {
 						this.on('activate', function() {
 							//Title 설정
-							Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( '전화걸기&받기' );
+							Ext.getCmp('Step2_Call').query('titlebar')[0].setTitle( '전화걸기&받기' );
 							
 							//TitleBar 설정
 							Ext.getCmp('Step2_Call').query('#Toolbar_Pre')[0].hide();
@@ -119,11 +119,11 @@ Ext.define('GuideApp.view.Step2_Call', {
 					//animation:'slide'
 				},
 				items: [
-					{
+					{//Page1-1
 						xtype: 'panel',
 						itemId: 'page1-1',
 						style: {
-							'background-image': 'url("../resources/images/phoneRoot.jpg")',
+							'background-image': 'url("./resources/images/phoneRoot.jpg")',
 							'background-size': '100% 100%',
 							'background-repeat': 'no-repeat'
 						},
@@ -145,11 +145,11 @@ Ext.define('GuideApp.view.Step2_Call', {
 							},
 						]
 					},
-					{//Page1 : 전화걸기
+					{//Page1-2
 						xtype: 'panel',
 						itemId: 'page1-2',
 						style: {
-							'background-image': 'url("../resources/images/Step2_Call/call_1-1.jpg")',
+							'background-image': 'url("./resources/images/Step2_Call/call_1-1.jpg")',
 							'background-size': '100% 100%',
 							'background-repeat': 'no-repeat'
 						}
@@ -171,18 +171,81 @@ Ext.define('GuideApp.view.Step2_Call', {
 						]
 						*/
 					}
-				]
+				],
+				listeners: {					
+					initialize: function(e) {
+						this.on('activate', function() {
+							//Title 설정
+							Ext.getCmp('Step2_Call').query('titlebar')[0].setTitle( '전화걸기' );
+							
+							//TitleBar 설정
+							Ext.getCmp('Step2_Call').query('#Toolbar_Pre')[0].hide();
+							Ext.getCmp('Step2_Call').query('#Toolbar_Next')[0].show();		
+							
+							//Overlay 보여주기
+							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
+							//Ext.getCmp('Root').query('#Overlay')[0].show();
+						});					
+					},
+				}
+			},
+			
+			//Page2 : 전화받기
+			{
+				xtype : 'container',
+				itemId: 'page2',
+				layout: {
+					type: 'card',
+					//animation:'slide'
+				},
+				items: [
+					{//Page2-1
+						xtype: 'panel',
+						itemId: 'page1-1',
+						style: {
+							'background-image': 'url("./resources/images/phoneRoot.jpg")',
+							'background-size': '100% 100%',
+							'background-repeat': 'no-repeat'
+						},
+						items:[
+						]
+					}
+				],
+				listeners: {					
+					initialize: function(e) {
+						this.on('activate', function() {
+							//Title 설정
+							Ext.getCmp('Step2_Call').query('titlebar')[0].setTitle( '전화받기' );
+							
+							//TitleBar 설정
+							Ext.getCmp('Step2_Call').query('#Toolbar_Pre')[0].show();
+							Ext.getCmp('Step2_Call').query('#Toolbar_Next')[0].hide();
+							
+							//Overlay 보여주기
+							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
+							//Ext.getCmp('Root').query('#Overlay')[0].show();
+						});					
+					},
+				}
 			}
+			
 			
 		],
 		
 		/**************Listeners**************/
 		listeners: [
+			//TitleBar Button
 			{
-				fn: 'onButton_Chapter2_Tap',
+				fn: 'onTitle_PreTap',
 				event: 'tap',
-				delegate: '#button_menu_call'
+				delegate: '#Toolbar_Pre'
 			},
+			{
+				fn: 'onTitle_NextTap',
+				event: 'tap',
+				delegate: '#Toolbar_Next'
+			},			
+			//Toolbar
 			{
 				fn: 'onToolbar_HomeTap',
 				event: 'tap',
@@ -192,6 +255,17 @@ Ext.define('GuideApp.view.Step2_Call', {
 				fn: 'onToolbar_RefreshTap',
 				event: 'tap',
 				delegate: '#Toolbar_Refresh'
+			},
+			//Menu
+			{
+				fn: 'onButton_Chapter2_Tap',
+				event: 'tap',
+				delegate: '#button_menu_call'
+			},
+			{
+				fn: 'onButton_Chapter2_Tap',
+				event: 'tap',
+				delegate: '#button_menu_pickUp'
 			},
 		],
 	},
