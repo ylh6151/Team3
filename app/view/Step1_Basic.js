@@ -454,7 +454,6 @@
 	onButton_Chapter1Tap: function(button, e, options) {
 		var index = parseInt(button.initialConfig.num);//0~n-1까지 입니다.
 		Ext.getCmp('Step1_Basic').setActiveItem(index+1);
-		Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( button.getText() );
 		
 		//toolbar 설정
 		Ext.getCmp('Step1_Basic').query('#Toolbar_Refresh')[0].show();
