@@ -22,6 +22,8 @@ Ext.define('GuideApp.view.Root', {
 			{
                 xtype: 'Step3_Message',//기본동작 View입니다.
             },
+			
+			
 			//OverLay
 			{
 				xtype: 'panel',
@@ -37,16 +39,30 @@ Ext.define('GuideApp.view.Root', {
 				
 				items: [
 					{
+						xtype: 'button',
+						itemId: 'button_Exit',
+						cls: 'cls-Overlay'
+					},
+					{
 						xtype: 'video',					
 						width: '100%', 
 						height: '100%',
 						url: './resources/video/CAM00244.mp4',
-						posterUrl: './resources/images/play.png'
+						posterUrl: './resources/images/play.png',					
 					}
 				],
 				listeners: [
-					//버튼으로 닫기넣어줄겁니다. 자동종료 지우자!
 					//재생은 posterURL을 활용합시다.
+					//닫기버튼
+					{
+						fn: function( event ) {
+							Ext.getCmp('Root').query('video')[0].stop();
+							Ext.getCmp('Root').query('#Overlay')[0].hide();//query는 '배열'을 반환합니다.							
+						},
+						event: 'tap',
+						delegate: '#button_Exit'
+					},
+					//정지시 자동종료
 					{
 						fn: function( event ) {
 							Ext.getCmp('Root').query('video')[0].stop();

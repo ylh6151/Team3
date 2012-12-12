@@ -145,6 +145,15 @@
 							tap :{
 								fn : function( event ) {
 									(this.getCls( ) == 'cls-greenbtn') ? this.setCls("cls-redbtn") : this.setCls("cls-greenbtn");
+									
+									//다음으로...
+									setTimeout( ""
+									+	"Ext.Msg.confirm('Clear!',  '잘하셨습니다.</br>다음단계로 이동하시겠습니까?', function( buttonId) {"
+									+		"if( buttonId == 'yes' ){"
+									+			"Ext.getCmp('Step1_Basic').getLayout().setAnimation({type:'slide', direction:'left'});"
+									+			"Ext.getCmp('Step1_Basic').setActiveItem(2);"
+									+		"}"							
+									+	"});", 1000);	
 								},
 								element:"element"
 							},
@@ -156,6 +165,7 @@
 					initialize: function(e) {
 						this.on('activate', function() {						
 							//TitleBar 설정
+							Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( "탭");
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].hide();
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
 							
@@ -199,8 +209,15 @@
 							touchend :{
 								fn : function( event ) {
 									Ext.getCmp('tapholdbtn').setCls("cls-star");
-									console.dir("touchend");
-									console.dir(event);
+									
+									//다음으로...
+									setTimeout( ""
+									+	"Ext.Msg.confirm('Clear!',  '잘하셨습니다.</br>다음단계로 이동하시겠습니까?', function( buttonId) {"
+									+		"if( buttonId == 'yes' ){"
+									+			"Ext.getCmp('Step1_Basic').getLayout().setAnimation({type:'slide', direction:'left'});"
+									+			"Ext.getCmp('Step1_Basic').setActiveItem(3);"
+									+		"}"							
+									+	"});", 1000);									
 								},
 								element:"element"
 							}
@@ -212,6 +229,7 @@
 					initialize: function(e) {
 						this.on('activate', function() {
 							//TitleBar 설정
+							Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( "탭홀드");
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();							
 							//Overlay 보여주기
@@ -240,6 +258,7 @@
 					initialize: function(e) {
 						this.on('activate', function() {
 							//TitleBar 설정
+							Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( "스와이프");
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
 							
@@ -253,6 +272,15 @@
 						fn : function( event ) {
 							document.querySelector('.cls-pinwheel').className = 'cls-pinwheel-animation';
 							setTimeout( "document.querySelector('.cls-pinwheel-animation').className = 'cls-pinwheel';" , 3000);
+							
+							//다음으로...
+							setTimeout( ""
+							+	"Ext.Msg.confirm('Clear!',  '잘하셨습니다.</br>다음단계로 이동하시겠습니까?', function( buttonId) {"
+							+		"if( buttonId == 'yes' ){"
+							+			"Ext.getCmp('Step1_Basic').getLayout().setAnimation({type:'slide', direction:'left'});"
+							+			"Ext.getCmp('Step1_Basic').setActiveItem(3);"
+							+		"}"							
+							+	"});", 4000);	
 						},
 						element : "element"
 						
@@ -278,6 +306,7 @@
 					initialize: function(e) {
 						this.on('activate', function() {	
 							//TitleBar 설정
+							Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( "핀치");
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
 							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].show();		
 							
@@ -335,7 +364,15 @@
 									document.querySelector( '.cls-pinch' ).style.width = changedScaleWidth + "px";
 									document.querySelector( '.cls-pinch' ).style.marginLeft  = eval( -(changedScaleWidth / 2 ) ) + "px";
 								}
-							}				
+							}
+							//다음으로...
+							setTimeout( ""
+							+	"Ext.Msg.confirm('Clear!',  '잘하셨습니다.</br>다음단계로 이동하시겠습니까?', function( buttonId) {"
+							+		"if( buttonId == 'yes' ){"
+							+			"Ext.getCmp('Step1_Basic').getLayout().setAnimation({type:'slide', direction:'left'});"
+							+			"Ext.getCmp('Step1_Basic').setActiveItem(5);"
+							+		"}"							
+							+	"});", 5000);//핀치를 5초동안 해보세요~	
 						},
 						element : "element"								
 					}
@@ -345,7 +382,22 @@
 			{
 				title: '드래그',
 				xtype: 'dragDrop',
-				itemId: 'page5'
+				itemId: 'page5',
+				
+				listeners: {
+					initialize: function(e) {
+						this.on('activate', function() {	
+							//TitleBar 설정
+							Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( "드래그 앤 드랍");
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Pre')[0].show();
+							Ext.getCmp('Step1_Basic').query('#Toolbar_Next')[0].hide();		
+
+							//Overlay 보여주기
+							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
+							//Ext.getCmp('Root').query('#Overlay')[0].show();
+						});
+					}
+				}
 			}
 		],
 		
@@ -426,7 +478,7 @@
 			rootPanel.getLayout().setAnimation({type:'slide', direction:'right'});
 			rootPanel.setActiveItem( Ext.getCmp('Root').query('#page' + num_preView)[0] );
 			
-			Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( Ext.getCmp('Root').query('#page0')[0].items.items[num_preView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
+			//Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( Ext.getCmp('Root').query('#page0')[0].items.items[num_preView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
 		}
 		
     },
@@ -443,7 +495,7 @@
 			rootPanel.getLayout().setAnimation({type:'slide', direction:'left'});
 			rootPanel.setActiveItem( Ext.getCmp('Root').query('#page' + num_nextView)[0] );
 
-			Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( Ext.getCmp('Root').query('#page0')[0].items.items[num_nextView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
+			//Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( Ext.getCmp('Root').query('#page0')[0].items.items[num_nextView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
 		}
     },
 	

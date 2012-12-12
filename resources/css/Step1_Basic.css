@@ -1,7 +1,7 @@
 ﻿@charset "utf-8";
 /*Menu*/
 .cls-basicmenu{
-	background-image: url('../images/basicmenu.png') !important;
+	background-image: url('../images/Step1_Basic/basicmenu.png') !important;
 	background-size: 100% 100% !important;
 	/* border:0px !important;
 	background-color: transparent !important;
@@ -144,7 +144,7 @@
 /* page3 : Swip*/
 .cls-pinwheel{
 	border: 0px;
-	background-image: url("../images/pinwheel_aquay.png") !important;
+	background-image: url("../images/Step1_Basic/pinwheel_aquay.png") !important;
 	background-size: 100% 100% !important;
 	background-repeat: no-repeat !important;
 	background-color: transparent !important;
@@ -162,7 +162,7 @@
 	border: 0px;
 	background: transparent;
 	
-	background-image: url("../images/pinwheel_aquay.png") !important;
+	background-image: url("../images/Step1_Basic/pinwheel_aquay.png") !important;
 	background-size: 100% 100% !important;
 	background-repeat: no-repeat !important;
 	
@@ -191,7 +191,7 @@
 	border: 0px;
 	background: transparent;
 	
-	background-image: url("../images/eyesight.gif") !important;
+	background-image: url("../images/Step1_Basic/eyesight.gif") !important;
 	background-size: 100% 100% !important;
 	background-repeat: no-repeat !important;
 	

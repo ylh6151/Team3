@@ -132,9 +132,15 @@ Ext.define('GuideApp.view.Step2_Call', {
 								listeners:{
 									tap :{
 										fn : function( event ) {
-											alert("잘하셨습니다.");
-											Ext.getCmp('Step2_Call').query('#page1')[0].setActiveItem(1);
-											//Ext.getCmp('Step2_Call').query('page1')[0].setTitle( button.getText() );
+											//알람메세지 : 싱글톤 방식
+											Ext.Msg.confirm("Clear!",  "잘하셨습니다.</br>다음단계로 이동하시겠습니까?", function( buttonId) {
+												if( buttonId == "yes" ){
+													Ext.getCmp('Step2_Call').query('#page1')[0].setActiveItem(2);
+												}
+												else{
+													console.log("캔슬");
+												}											
+											});
 										},
 										element:"element"
 									}
@@ -172,10 +178,8 @@ Ext.define('GuideApp.view.Step2_Call', {
 				listeners: {					
 					initialize: function(e) {
 						this.on('activate', function() {
-							//Title 설정
-							Ext.getCmp('Step2_Call').query('titlebar')[0].setTitle( '전화걸기' );
-							
 							//TitleBar 설정
+							Ext.getCmp('Step2_Call').query('titlebar')[0].setTitle( '전화걸기' );
 							Ext.getCmp('Step2_Call').query('#Toolbar_Pre')[0].hide();
 							Ext.getCmp('Step2_Call').query('#Toolbar_Next')[0].show();		
 							
@@ -211,10 +215,8 @@ Ext.define('GuideApp.view.Step2_Call', {
 				listeners: {					
 					initialize: function(e) {
 						this.on('activate', function() {
-							//Title 설정
-							Ext.getCmp('Step2_Call').query('titlebar')[0].setTitle( '전화받기' );
-							
 							//TitleBar 설정
+							Ext.getCmp('Step2_Call').query('titlebar')[0].setTitle( '전화받기' );
 							Ext.getCmp('Step2_Call').query('#Toolbar_Pre')[0].show();
 							Ext.getCmp('Step2_Call').query('#Toolbar_Next')[0].hide();
 							
