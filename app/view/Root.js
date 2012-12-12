@@ -7,22 +7,24 @@ Ext.define('GuideApp.view.Root', {
         layout: {
             type: 'card',
 			animation:'slide'
-        },
+        },		
+		
+		html: '<audio id="testAudio" src="./resources/audio/2_1_1.mp3" preload="auto" ></audio>',//음악재생용	
+		
 		/**************Items**************/
-        items: [
-            {
-                xtype: 'MenuView',
-            },
+		items: [
 			{
-                xtype: 'Step1_Basic',//기본동작 View입니다.
-            },
-            {
-                xtype: 'Step2_Call',//기본동작 View입니다.
-            },
+				xtype: 'MenuView',
+			},
 			{
-                xtype: 'Step3_Message',//기본동작 View입니다.
-            },
-			
+				xtype: 'Step1_Basic',//기본동작 View입니다.
+			},
+			{
+				xtype: 'Step2_Call',//기본동작 View입니다.
+			},
+			{
+				xtype: 'Step3_Message',//기본동작 View입니다.
+			},		
 			
 			//OverLay
 			{
@@ -73,8 +75,6 @@ Ext.define('GuideApp.view.Root', {
 					}
 				]
 			}
-        ]
-    },
-
-	
+		]
+	},
 });

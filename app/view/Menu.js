@@ -64,18 +64,18 @@
 	/**************Function for Listeners**************/
 	onButton_Basic_Tap: function(button, e, options) {
 		Ext.getCmp('Root').getLayout().setAnimation({type:'slide', direction:'left'});
-		Ext.getCmp('Root').setActiveItem(1);
 		Ext.getCmp('Step1_Basic').setActiveItem(0);
+		Ext.getCmp('Root').setActiveItem(1);
 	},
 	onButton_Call_Tap: function(button, e, options) {
 		Ext.getCmp('Root').getLayout().setAnimation({type:'slide', direction:'left'});
-		Ext.getCmp('Root').setActiveItem(2);
-		Ext.getCmp('Step2_Call').setActiveItem(0);		
+		Ext.getCmp('Step2_Call').setActiveItem(0);	
+		Ext.getCmp('Root').setActiveItem(2);			
 	},
 	onButton_Message_Tap: function(button, e, options) {
 		Ext.getCmp('Root').getLayout().setAnimation({type:'slide', direction:'left'});
+		Ext.getCmp('Step3_Message').setActiveItem(0);	
 		Ext.getCmp('Root').setActiveItem(3);
-		Ext.getCmp('Step3_Message').setActiveItem(0);		
 	}
 	
 });

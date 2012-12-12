@@ -278,12 +278,11 @@
 							+	"Ext.Msg.confirm('Clear!',  '잘하셨습니다.</br>다음단계로 이동하시겠습니까?', function( buttonId) {"
 							+		"if( buttonId == 'yes' ){"
 							+			"Ext.getCmp('Step1_Basic').getLayout().setAnimation({type:'slide', direction:'left'});"
-							+			"Ext.getCmp('Step1_Basic').setActiveItem(3);"
+							+			"Ext.getCmp('Step1_Basic').setActiveItem(4);"
 							+		"}"							
 							+	"});", 4000);	
 						},
-						element : "element"
-						
+						element : "element"						
 					}					
 				}
 			},
@@ -465,9 +464,6 @@
 	onTitle_PreTap: function(button, e, options) {		
         //1. 이동
 		var rootPanel = Ext.getCmp('Step1_Basic');//card속성을 가진 Step1_Basicd의 Root역할을 하는 Panel
-		var titleBar = Ext.getCmp('ContentView1-titlebar');//RootPanel의 TitleBar
-		var table = Ext.getCmp('page0');//RootPannel에 접근하는 목차에 접근합니다. text를 Title에 적어주기 위해서입니다.
-
 		var num_cardSize = rootPanel.innerItems.length;
 		var num_currentView = eval(rootPanel.getActiveItem().getItemId().slice(4,5));
 		var num_preView = num_currentView - 1;//현재뷰에서 한칸 뒤로
@@ -476,9 +472,7 @@
 		
 		if( num_preView >= 1 ){//범위내일때만 동작
 			rootPanel.getLayout().setAnimation({type:'slide', direction:'right'});
-			rootPanel.setActiveItem( Ext.getCmp('Root').query('#page' + num_preView)[0] );
-			
-			//Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( Ext.getCmp('Root').query('#page0')[0].items.items[num_preView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
+			rootPanel.setActiveItem( num_preView );
 		}
 		
     },
@@ -493,9 +487,7 @@
 
 		if( num_nextView < num_cardSize ){//범위내일때만 동작
 			rootPanel.getLayout().setAnimation({type:'slide', direction:'left'});
-			rootPanel.setActiveItem( Ext.getCmp('Root').query('#page' + num_nextView)[0] );
-
-			//Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( Ext.getCmp('Root').query('#page0')[0].items.items[num_nextView-1].getText() );//왜 items를 두번 접근해야되는지 모르겠다.-_-
+			rootPanel.setActiveItem( num_nextView );
 		}
     },
 	
