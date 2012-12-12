@@ -95,16 +95,13 @@ Ext.define('GuideApp.view.Step3_Message', {
 				listeners: {					
 					initialize: function(e) {
 						this.on('activate', function() {	
-							//Title 설정
-							Ext.getCmp('Step1_Basic').query('titlebar')[0].setTitle( '문자쓰기&받기' );
-							
 							//TitleBar 설정
+							Ext.getCmp('Step3_Message').query('titlebar')[0].setTitle( '문자쓰기&받기' );
 							Ext.getCmp('Step3_Message').query('#Toolbar_Pre')[0].hide();
 							Ext.getCmp('Step3_Message').query('#Toolbar_Next')[0].hide();		
 							
-							//Overlay 보여주기
-							//Ext.getCmp('Root').query('video')[0].setUrl('./resources/video/CAM00244.mp4');
-							//Ext.getCmp('Root').query('#Overlay')[0].show();
+							//toolbar 설정
+							Ext.getCmp('Step3_Message').query('#Toolbar_Refresh')[0].hide();
 						});					
 					},
 				}
@@ -127,6 +124,18 @@ Ext.define('GuideApp.view.Step3_Message', {
 	},
 	
 	/**************Function for Listeners**************/
+	//Menu
+	onButton_Chapter2_Tap: function(button, e, options) {
+		/*
+		var index = parseInt(button.initialConfig.num);//0~n-1까지 입니다.
+		Ext.getCmp('Step3_Message').setActiveItem(index+1);
+		Ext.getCmp('Step3_Message').query('titlebar')[0].setTitle( button.getText() );
+		*/
+		
+		//toolbar 설정
+		Ext.getCmp('Step3_Message').query('#Toolbar_Refresh')[0].show();
+    },
+	
 	//Tool Bar
 	onToolbar_HomeTap: function(button, e, options) {
         console.log("Home");

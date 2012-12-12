@@ -1,0 +1,222 @@
+﻿@charset "utf-8";
+/*Menu*/
+.cls-basicmenu{
+	background-image: url('../images/basicmenu.png') !important;
+	background-size: 100% 100% !important;
+	/* border:0px !important;
+	background-color: transparent !important;
+	border-radius: 0 !important; */
+	background-repeat: no-repeat !important;
+}
+
+	.cls-basicmenu-tapbutton{
+		background: transparent !important;
+		border:0px;
+		border-radius: 1em;
+		width: 42%;
+		height: 44%;
+		top: 5%;
+		left: 6%;
+		position: absolute;
+	}
+	
+	.cls-basicmenu-tapholdbutton{
+		background: transparent !important;
+		border:0px;
+		border-radius: 1em;
+		width: 42%;
+		height: 44%;
+		top: 5%;
+		left: 52%;
+		position: absolute;
+	}
+	
+	.cls-basicmenu-dropbutton{
+		background: transparent !important;
+		border:0px;
+		border-radius: 1em;
+		width: 42%;
+		height: 44%;
+		top: 51%;
+		left: 6%;
+		position: absolute;
+	}
+	
+	.cls-basicmenu-pinchbutton{
+		background: transparent !important;
+		border:0px;
+		border-radius: 1em;
+		width: 42%;
+		height: 44%;
+		top: 51%;
+		left: 52%;
+		position: absolute;
+	}
+	
+	.cls-basicmenu-swipbutton{
+		background: transparent !important;
+		border:0px;
+		border-radius: 6em;
+		width: 48%;
+		height: 37%;
+		top: 29%;
+		left: 26%;
+		position: absolute;
+	}
+	
+/* page1 : Tap*/
+.cls-greenbtn{
+	border: 0px;
+	background-image: url("../images/Step1_Basic/Perspective-Button-Go-icon.png") !important;
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	background-color: transparent !important;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 300px;
+	margin-top: -150px;
+	margin-left: -150px;
+}
+.cls-redbtn{
+	border: 0px;
+	background-image: url("../images/Step1_Basic/perspective_button_stop.png") !important;
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	background-color: transparent !important;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 300px;
+	margin-top: -150px;
+	margin-left: -150px;
+}
+
+/* page2 : Tap-Hold*/
+.cls-star{/*기본*/
+	border: 0px;
+	background-image:url(../images/star.png) !important;
+	background-color: transparent !important;
+	background-size: 100% 100%;
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 20%;
+}
+
+.cls-star2{/*탭홀드*/
+	border: 0px;
+	background-image:url(../images/star2.png) !important;
+	background-color: transparent !important;
+	background-size: 100% 100%;
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 20%;
+}
+
+.cls-starhold{/*터치스타트*/
+	border: 0px;
+	background-image:url(../images/second/q.png) !important;
+	background-color: transparent !important;
+	background-size: 100% 100%;
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 20%;
+	
+	-webkit-animation-name: tapHoldAnimation ;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-iteration-count: 5
+}
+
+@-webkit-keyframes tapHoldAnimation {
+	0%     { -webkit-transform: translate(5px, 0px); }
+	25%     { -webkit-transform: translate(-5px, 0px); }
+	50%     { -webkit-transform: translate(5px, 0px); }
+	75%     { -webkit-transform: translate(-5px, 0px); }
+	100% { -webkit-transform: translate(5px, 0px); }
+}
+
+
+/* page3 : Swip*/
+.cls-pinwheel{
+	border: 0px;
+	background-image: url("../images/pinwheel_aquay.png") !important;
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	background-color: transparent !important;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 300px;
+	margin-top: -150px;
+	margin-left: -150px;
+}
+
+
+.cls-pinwheel-animation{
+	border: 0px;
+	background: transparent;
+	
+	background-image: url("../images/pinwheel_aquay.png") !important;
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 300px;
+	margin-top: -150px;
+	margin-left: -150px;
+	
+	-webkit-animation-name: myAnimation ;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-direction: alternate;	
+	animation-timing-function : ease-out;
+}
+
+@-webkit-keyframes myAnimation {
+	0%     { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(1800deg); }
+}
+
+/* page4 : Pinch 관련 */
+.cls-pinch{
+	border: 0px;
+	background: transparent;
+	
+	background-image: url("../images/eyesight.gif") !important;
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+
+/* page5 : Drag & Drop 관련 */
+.dmb {
+    font-size: 0.8em; 
+    border-radius: 7px; 
+    color: white;
+}
+.x-droppable {
+    border: #003d99 dashed;
+    opacity: 0.5;
+}
+	.x-drop-active {
+		opacity: 1;
+	}
+	.x-drop-invalid {
+		background-color: red;
+	}
+	.x-drop-hover {
+		border: #ae0404 dashed;
+	}
