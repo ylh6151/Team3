@@ -97,36 +97,39 @@
 /* page2 : Tap-Hold*/
 .cls-star{/*기본*/
 	border: 0px;
-	background-image:url(../images/Step1_Basic/penguin1.png) !important;
+	background-image:url(../images/Step1_Basic/panguin-minju/1.png) !important;
 	background-color: transparent !important;
 	background-size: 100% 100%;
 	position: absolute;
-	width: 50%;
-	height: 50%;
-	left: 20%;
+	width: 64%;
+	height: 57%;
+	left: 18%;
+	top: 17%;
 }
 
 .cls-star2{/*탭홀드*/
 	border: 0px;
-	background-image:url(../images/Step1_Basic/penguin3.png) !important;
+	background-image:url(../images/Step1_Basic/panguin-minju/3.png) !important;
 	background-color: transparent !important;
 	background-size: 100% 100%;
 	position: absolute;
-	width: 50%;
-	height: 50%;
-	left: 20%;
+	width: 64%;
+	height: 57%;
+	left: 18%;
+	top: 17%;
 }
 
 .cls-starhold{/*터치스타트*/
 	border: 0px;
-	background-image:url(../images/Step1_Basic/penguin2.png) !important;
+	background-image:url(../images/Step1_Basic/panguin-minju/2.png) !important;
 	background-color: transparent !important;
 	background-size: 100% 100%;
 	position: absolute;
-	width: 50%;
-	height: 50%;
-	left: 20%;
-	
+	width: 64%;
+	height: 57%;
+	left: 18%;
+	top: 17%;
+		
 	-webkit-animation-name: tapHoldAnimation ;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-iteration-count: 5
