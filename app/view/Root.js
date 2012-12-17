@@ -9,7 +9,7 @@ Ext.define('GuideApp.view.Root', {
 			animation:'slide'
         },		
 		
-		html: '<audio id="testAudio" src="./resources/audio/2_1_1.mp3" preload="auto" ></audio>',//음악재생용	
+		html: '<audio id="testAudio" src="" preload="auto" ></audio>',//음악재생용	
 		
 		/**************Items**************/
 		items: [

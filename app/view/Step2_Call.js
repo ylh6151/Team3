@@ -141,7 +141,7 @@ Ext.define('GuideApp.view.Step2_Call', {
 						],
 						listeners: {
 							painted: function() {
-								document.querySelector("#testAudio").src= "./resources/audio/2_1_1.mp3";
+								document.querySelector("#testAudio").src= "./resources/audio/2-1-1.mp3";
 								document.querySelector("#testAudio").play();
 							},							
 							deactivate: function() {
@@ -172,7 +172,17 @@ Ext.define('GuideApp.view.Step2_Call', {
 									}
 								}
 							},
-						]
+						],
+						listeners: {
+							painted: function() {
+								document.querySelector("#testAudio").src= "./resources/audio/2-1-2.mp3";
+								document.querySelector("#testAudio").play();
+							},							
+							deactivate: function() {
+								//다음으로...
+								document.querySelector("#testAudio").pause();
+							}
+						}
 					},
 					{//Page1-3 : 키패널(2)
 						xtype: 'panel',
@@ -196,7 +206,17 @@ Ext.define('GuideApp.view.Step2_Call', {
 									}
 								}
 							},
-						]
+						],
+						listeners: {
+							painted: function() {
+								document.querySelector("#testAudio").src= "./resources/audio/2-1-3.mp3";
+								document.querySelector("#testAudio").play();
+							},							
+							deactivate: function() {
+								//다음으로...
+								document.querySelector("#testAudio").pause();
+							}
+						}
 					},
 					{//Page1-4 : 전화연결중
 						xtype: 'panel',
@@ -241,7 +261,17 @@ Ext.define('GuideApp.view.Step2_Call', {
 									}
 								}
 							},
-						]
+						],
+						listeners: {
+							painted: function() {
+								document.querySelector("#testAudio").src= "./resources/audio/2-1-5.mp3";
+								document.querySelector("#testAudio").play();
+							},							
+							deactivate: function() {
+								//다음으로...
+								document.querySelector("#testAudio").pause();
+							}
+						}
 					},
 					{//Page1-6 : 통화종료
 						xtype: 'panel',
