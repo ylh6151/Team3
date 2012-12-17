@@ -28,7 +28,7 @@ var addEvent = (function () {
 (function () {
 
     var pre = document.createElement('pre');
-    pre.id = "view-source"
+    pre.id = "view-source";
 
     // private scope to avoid conflicts with demos
     addEvent(window, 'click', function (event) {
@@ -41,7 +41,7 @@ var addEvent = (function () {
                 // original source - rather than rendered source
                 xhr.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
-                        pre.innerHTML = this.responseText.replace(/[<>]/g, function (m) { return { '<': '&lt;', '>': '&gt;'}[m] });
+                        pre.innerHTML = this.responseText.replace(/[<>]/g, function (m) { return { '<': '&lt;', '>': '&gt;'}[m]; });
                         prettyPrint();
                     }
                 };
@@ -72,7 +72,7 @@ completedOnDropDownViewLoad = function () {
     var yum = document.createElement('p');
     var msie = /*@cc_on!@*/0;
     yum.style.opacity = 1;
-    var links = document.querySelectorAll('li > a'), el = null
+    var links = document.querySelectorAll('li > a'), el = null;
 
     for (var i = 0; i < links.length; i++) {
 

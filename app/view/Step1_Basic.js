@@ -1,7 +1,7 @@
 ﻿Ext.define('GuideApp.view.Step1_Basic', { 
 	extend: 'Ext.Panel',
 	xtype: 'Step1_Basic',
-	id:  'Step1_Basic', 
+	id:  'Step1_Basic',
 			
 	config: {
 		cls: 'cls-content',/*backgroundImg가 들어가는 class입니다*/
@@ -326,7 +326,7 @@
 					
 					pinch :{
 						fn : function( event ) {
-							var changedScale;
+							var changedScaleHeight, changedScaleWidth;
 							var maxWidth = document.querySelector( '.cls-pinch' ).parentElement.parentElement.clientWidth;
 							var maxHeight = document.querySelector( '.cls-pinch' ).parentElement.parentElement.clientHeight;
 							

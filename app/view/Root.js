@@ -49,7 +49,7 @@ Ext.define('GuideApp.view.Root', {
 						xtype: 'video',					
 						width: '100%', 
 						height: '100%',
-						url: './resources/video/CAM00244.mp4',
+						url: './resources/video/tap.mp4',
 						posterUrl: './resources/images/play.png',					
 					}
 				],
